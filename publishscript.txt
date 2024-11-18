@@ -1,0 +1,27 @@
+app_name=
+app_version=
+app_upgrade_from=
+
+ucs_version=5.0
+
+docker_repo=
+provider_login=
+provider_pwd=
+
+univention-appcenter-control new-version --username $provider_login --pwdfile $provider_pwd "$(ucs_version)/$(app_name)=$(app_ver)" "$(ucs_version)/$(app_name)=$(app_newver)"
+
+univention-appcenter-control upload --username $provider_login --pwdfile $provider_pwd --noninteractive $(ucs_version)/$(app_name)=$(app_version) \
+	attributes \
+	env \
+	setup \
+	restore_data \
+	preinst \
+	inst \
+	store_data \
+	uinst \
+	update_app_version \
+	Description_EN \
+	Description_DE \
+	Short_Description_EN \
+	Short_Description_DE
+univention-appcenter-control set --username $provider_login --pwdfile $provider_pwd --noninteractive $(ucs_version)/$(app_name)=$(app_version) \ --json ''
