@@ -21,4 +21,7 @@ jobs:
           python-version: '3.10'
       
       - name: Run script
-        run: test
+        run: |
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         ./univention-appcenter-control list --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
