@@ -21,6 +21,6 @@ jobs:
       - name: Run script
         run: |
          chmod +x univention-appcenter-control
-         echo "123" > pwdfile
-         ./univention-appcenter-control list --username Administrator --pwdfile ./pwdfile
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         ./univention-appcenter-control list --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
         
