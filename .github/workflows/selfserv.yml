@@ -19,7 +19,7 @@ jobs:
           python-version: '3.10'
       
       - name: Run script
-        working-directory: /home/runner/work/test/test
+        working-directory: /home/runner/work/_temp
         run: |
           ./selfservice list --username Administrator --pwdfile ./pwdfile
         
