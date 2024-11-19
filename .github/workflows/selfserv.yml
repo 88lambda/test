@@ -1,9 +1,11 @@
 name: Script Workflow
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Version"
+        default: "0.0.0.0"
 
 jobs:
   run-script:
