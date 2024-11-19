@@ -1,0 +1,3 @@
+chmod +x univention-appcenter-control
+echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+./univention-appcenter-control list --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
