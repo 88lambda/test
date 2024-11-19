@@ -20,5 +20,6 @@ jobs:
       
       - name: Run script
         run: |
-          ./univention-appcenter-control list --username Administrator --pwdfile ./pwdfile
+         chmod +x univention-appcenter-control
+         ./univention-appcenter-control list --username Administrator --pwdfile ./pwdfile
         
