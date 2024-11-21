@@ -26,4 +26,4 @@ jobs:
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          ./univention-appcenter-control new-version --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds 5.0/onlyoffice-ds=8.2.1.1
          ./univention-appcenter-control set --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds=8.2.1.1 \ --json '{"DockerImage": "onlyoffice/documentserver-ucs:8.2.1.1"}'
-         univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=8.2.1.1 \ app.ini \ setup.sh \ preinst.sh \ joinscript.sh \ unjoinscript.sh \ Short_Descriprion \ Short_Descriprion_DE \ Descriprion \ Descriprion_DE
+         univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive --json 5.0/onlyoffice-ds=8.2.1.1 \ app.ini \ setup.sh \ preinst.sh \ joinscript.sh \ unjoinscript.sh \ Short_Descriprion \ Short_Descriprion_DE \ Descriprion \ Descriprion_DE
