@@ -1,0 +1,27 @@
+name: Metadata Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Version"
+        default: "0.0.0.0"
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.10'
+      
+      - name: Run script
+        run: |
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive --json 5.0/onlyoffice-ds=8.2.1.1.3 \ app.ini \ setup.sh \ preinst.sh \ joinscript.sh \ unjoinscript.sh \ Short_Descriprion \ Short_Descriprion_DE \ Descriprion \ Descriprion_DE
