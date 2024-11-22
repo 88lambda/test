@@ -1,11 +1,18 @@
 name: Script Workflow
+run-name: ${{ inputs.ver }}
 
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: "Version"
-        default: "0.0.0.0"
+      ver:
+        description: "App Version"
+        default: "x.x.x.x"
+      ucs_ver:
+        description: "UCS version"
+        default: "5.0"
+      docker_ver:
+        description: "Docker version"
+        default: "x.x.x.x"
 
 jobs:
   run-script:
@@ -25,6 +32,6 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control new-version --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds 5.0/onlyoffice-ds=8.2.1.1.4
-         ./univention-appcenter-control set --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds=8.2.1.1.4 --json '{"DockerImage": "onlyoffice/documentserver-ucs:8.2.1.1"}'
-         univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive --json 5.0/onlyoffice-ds=8.2.1.1.4 \ app.ini \ setup.sh \ preinst.sh \ joinscript.sh \ unjoinscript.sh \ Short_Descriprion \ Short_Descriprion_DE \ Descriprion \ Descriprion_DE
+         ./univention-appcenter-control new-version --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile ${{ inputs.ucs_ver }}/onlyoffice-ds ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }}
+         ./univention-appcenter-control set --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} --json '{"DockerImage": "onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}"}'
+         univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive --json ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} \setup \inst \test
