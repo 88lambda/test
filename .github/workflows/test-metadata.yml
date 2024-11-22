@@ -24,4 +24,4 @@ jobs:
         run: |
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=8.2.1.1.4 \setup \inst \test
+         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=8.2.1.1.4 \setup \inst \test \Description \Description_DE \Short_Description \Short_Description_DE
