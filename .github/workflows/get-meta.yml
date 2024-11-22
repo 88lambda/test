@@ -22,7 +22,7 @@ jobs:
       
       - name: Run script
         run: |
-         curl +O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          ./univention-appcenter-control get --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds=8.2.1.1
