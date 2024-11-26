@@ -1,4 +1,4 @@
-name: Script Workflow
+name: sed
 run-name: ${{ inputs.ver }}
 
 on:
