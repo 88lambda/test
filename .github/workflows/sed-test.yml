@@ -33,5 +33,5 @@ jobs:
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          sed -i 's|^Version=.*|Version=\\$\\{\\{ inputs.ver \\}\\}|' onlyoffice-ds.ini
-         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:\\$\\{\\{ inputs.dock_ver \\}\\}|' apps.ini
+         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:\\$\\{\\{ inputs.dock_ver \\}\\}|' onlyoffice-ds.ini
          
