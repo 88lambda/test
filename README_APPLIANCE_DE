@@ -1,0 +1,31 @@
+<p>
+	Diese App-Appliance enthält bereits ONLYOFFICE Document Server und ownCloud.
+</p>
+<ul>
+	<li>
+		Bitte stellen Sie sicher, dass Sie über https://&lt;hostname&gt;.&lt;ucs-domain&gt; auf UCS und ownCloud zugreifen und nicht über die IP-Adresse.
+	</li>
+	<li>
+		Bitte akzeptieren Sie eine Ausnahme für das UCS SSL-Zertifikat.
+	</li>
+	<li>
+		Die Kommunikation zwischen ownCloud und ONLYOFFICE erfolgt über hostnames. Wenn die obige &lt;hostname&gt;.&lt;ucs-domain&gt; Kombination für Ihren Client nicht funktioniert, können Sie entweder das UCS-System zur Liste der DNS-Nameserver Ihres Clients hinzufügen oder die IP-Adresse und den Hostnamen zu Ihrer lokalen Hosts-Datei hinzufügen.
+	</li>
+</ul>
+<p>
+	Die Anmeldedaten für den ownCloud Administrator-Nutzer sind:
+</p>
+<ul>
+	<li>
+		Benutzername: owncloud
+	</li>
+	<li>
+		Passwort: owncloud
+	</li>
+</ul>
+<p>
+	Bitte ändern Sie das Passwort für den ownCloud Admin-Benutzer!
+</p>
+<p>
+test test
+</p>

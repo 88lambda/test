@@ -1,0 +1,31 @@
+<p>
+	This app appliance already includes ONLYOFFICE Document Server and ownCloud.
+</p>
+<ul>
+	<li>
+		Please make sure you access UCS and ownCloud via https://&lt;hostname&gt;.&lt;ucs-domain&gt; and not with the IP address.
+	</li>
+	<li>
+		Please accept an exception for the UCS SSL certificate.
+	</li>
+	<li>
+		The communication between ownCloud and ONLYOFFICE uses hostnames. If the above &lt;hostname&gt;.&lt;ucs-domain&gt; combination does not work for your client, you can either add the UCS system to your client's list of DNS nameservers or you can add the IP address and the hostname to your local hosts file.
+	</li>
+</ul>
+<p>
+	The login credentials for the ownCloud admin user are:
+</p>
+<ul>
+	<li>
+		username: owncloud
+	</li>
+	<li>
+		password: owncloud
+	</li>
+</ul>
+<p>
+	Please change the password for the owncloud admin user!
+</p>
+<p>
+test test test
+</p>
