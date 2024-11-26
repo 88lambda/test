@@ -1,0 +1,37 @@
+name: Script Workflow
+run-name: ${{ inputs.ver }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "App Version"
+        default: "x.x.x.x"
+      ucs_ver:
+        description: "UCS version"
+        default: "5.0"
+      docker_ver:
+        description: "Docker version"
+        default: "x.x.x.x"
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.10'
+      
+      - name: Run script
+        run: |
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         sed -i 's|^Version=.*|Version=\$\{\{ inputs.ver \}\}|' \onlyoffice-ds.ini
+         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:\${{ inputs.docker_ver }}|' \onlyoffice-ds.ini
+         
