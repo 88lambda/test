@@ -1,0 +1,46 @@
+<p>
+	Um ONLYOFFICE Document Server mit Nextcloud oder ownCloud zu verwenden, muss die jeweilige App installiert und das ONLYOFFICE Plugin aktiviert werden.
+</p>
+<p>
+	Im Plugin muss noch die Adresse zum Document Server hinterlegt werden. Bitte beachten Sie: Der Parameter <b>documentserver</b> ist der Rechnername (FQDN, ohne Portnummer) des Servers, wo der ONLYOFFICE Document Server installiert ist. Die Adresse muss vom Browser des Benutzers und vom Nextcloud bzw. ownCloud Server aus erreichbar sein. Die Serveradresse muss auch vom Document Server aus erreichbar sein, damit er korrekt arbeiten kann.
+</p>
+<pre>
+    https://&lt;documentserver&gt;/onlyoffice-documentserver
+</pre>
+<h3>
+	Konfiguration des ONLYOFFICE Plugins in Nextcloud
+</h3>
+<ul>
+	<li>
+		An Nextcloud als Benutzer <i>Administrator</i> anmelden.
+	</li>
+	<li>
+		Gehen Sie auf&nbsp; <i>Apps</i> → <i>Office &amp; Text</i> → enable <i>ONLYOFFICE</i>.
+	</li>
+	<li>
+		Gehen Sie auf <i>Admin</i> settings und schauen Sie nach <i>ONLYOFFICE</i>. Dort geben Sie die Adresse für den ONLYOFFICE Document Server von oben ein und klicken abschließend auf <i>Save</i>.
+	</li>
+</ul>
+<h3>
+	Konfiguration des ONLYOFFICE Plugins in ownCloud
+</h3>
+<p>
+	Das ONLYOFFICE Plugin ist bereits in ownCloud installiert, aber standardmäßig deaktiviert. Wenn Sie ONLYOFFICE auf das gleiche System wie ownCloud installieren, wird das Plugin in ownCloud automatisch aktiviert.
+</p>
+<p>
+	Sie können das prüfen oder das Plugin manuell mit den folgenden Schritten aktivieren:
+</p>
+<ul>
+	<li>
+		Wenn ownCloud noch nicht installiert ist, gehen Sie in das App Center, wählen Sie ownCloud aus und installieren Sie die App.
+	</li>
+	<li>
+		Melden Sie sich bei ownCloud als Adminbenutzer (Benutzername <i>owncloud</i>) an.
+	</li>
+	<li>
+		Gehen Sie anschließend zu <i>Settings</i> → <i>Admin Apps</i> → <i>Show disabled Apps</i> → <i>[Enable] ONLYOFFICE</i>
+	</li>
+	<li>
+		Gehen Sie zu <i>Settings</i> → <i>Admin</i> → <i>Additional</i> → <i>ONLYOFFICE</i>: Prüfen Sie die Einstellungen für den Document Editing Service. Standardmäßig ist der UCS Rechnername eingetragen, auf dem auch ownCloud installiert ist.
+	</li>
+</ul>
