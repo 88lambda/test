@@ -36,4 +36,4 @@ jobs:
          ./univention-appcenter-control set --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} --json '{"DockerImage": "onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}"}'
          sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' onlyoffice-ds.ini
          sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' onlyoffice-ds.ini
-         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} \onlyoffice-ds.ini \setup \inst \test
+         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} \onlyoffice-ds.svg \onlyoffice-ds.ini \setup \inst \test
