@@ -3,8 +3,11 @@ name: Metadata Test
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: "Version"
+      ver:
+        description: "App version"
+        default: "0.0.0.0"
+      docker_ver:
+        description: "Docker version"
         default: "0.0.0.0"
 
 jobs:
@@ -25,4 +28,6 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=8.2.1.1.8 \onlyoffice-ds.ini
+         sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' onlyoffice-ds.ini
+         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' onlyoffice-ds.ini
+         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=${{ inputs.ver }} \onlyoffice-ds.ini
