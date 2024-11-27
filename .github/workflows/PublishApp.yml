@@ -1,5 +1,5 @@
-name: Script Workflow
-run-name: ${{ inputs.ver }}
+name: Publish App
+run-name: Publish App version ${{ inputs.ver }}
 
 on:
   workflow_dispatch:
