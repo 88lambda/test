@@ -18,7 +18,7 @@ env:
   command: ./univention-appcenter-control
   
 jobs:
-  run-script:
+  Publish community:
     runs-on: ubuntu-latest
     
     steps:
