@@ -1,0 +1,238 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+#
+# Copyright 2019 Univention GmbH
+#
+# https://www.univention.de/
+#
+# All rights reserved.
+#
+# The source code of this program is made available
+# under the terms of the GNU Affero General Public License version 3
+# (GNU AGPL V3) as published by the Free Software Foundation.
+#
+# Binary versions of this program provided by Univention to you as
+# well as other copyrighted, protected or trademarked materials like
+# Logos, graphics, fonts, specific documentations and configurations,
+# cryptographic keys etc. are subject to a license agreement between
+# you and Univention and not subject to the GNU AGPL V3.
+#
+# In the case you use this program under the terms of the GNU AGPL V3,
+# the program is provided in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public
+# License with the Debian GNU/Linux or Univention distribution in file
+# /usr/share/common-licenses/AGPL-3; if not, see
+# <https://www.gnu.org/licenses/>.
+#
+
+import os
+import os.path
+import importlib
+import time
+import sys
+import random
+import string
+import pathlib
+import zipfile
+import subprocess
+
+os.environ["UCSTEST_SELENIUM_USER_AGENT"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+test_lib = os.environ.get('UCS_TEST_LIB', 'univention.testing.apptest')
+try:
+    test_lib = importlib.import_module(test_lib)
+except ImportError:
+    print('Could not import {}. Maybe set $UCS_TEST_LIB'.format(test_lib))
+    sys.exit(1)
+
+
+def test_owncloud_and_nextcloud_installed(umc, appcenter):
+    result = subprocess.run(['univention-app', 'shell', 'onlyoffice-ds-integration', 'sed', '-i', 's/"allowPrivateIPAddress": false,/"allowPrivateIPAddress": true,/', '/etc/onlyoffice/documentserver/default.json'], stdout=subprocess.PIPE)
+    if result.returncode != 0:
+        raise RuntimeError('Could not execute command: {}'.format(result.stdout))
+    result = subprocess.run(['univention-app', 'shell', 'onlyoffice-ds-integration', 'supervisorctl', 'restart', 'all'], stdout=subprocess.PIPE)
+    if result.returncode != 0:
+        raise RuntimeError('Could not execute command: {}'.format(result.stdout))
+    time.sleep(10)
+    appcenter.install_newest('nextcloud')
+    appcenter.install_newest('owncloud')
+
+
+def _use_document_nextcloud(chrome, document_title, ext, action=None):
+    found = False
+    # for each row in the table class "files-filestable"
+    for element in chrome.find_all('table.files-filestable a.name'):
+        for elem in chrome.find_all_below(element, 'span.innernametext'):
+            if elem.text == document_title:
+                for elem in chrome.find_all_below(element, 'span.extension'):
+                    if elem.text == ext:
+                        if action:
+                            chrome.click_element_below(element, 'span.fileactions a.action.action-menu')
+                            time.sleep(1)
+                            chrome.save_screenshot(action)
+                            chrome.click_element('div.fileActionsMenu.open a[data-action={}]'.format(action))
+                        else:
+                            elem.click()
+                        found = True
+    if not found:
+        raise RuntimeError('Did not find {}{}'.format(document_title, ext))
+    time.sleep(4)
+
+
+def _use_document_owncloud(chrome, document_title, ext, action=None):
+    found = False
+    for element in chrome.find_all('table#filestable a.name'):
+        for elem in chrome.find_all_below(element, 'span.innernametext'):
+            if elem.text == document_title:
+                for elem in chrome.find_all_below(element, 'span.extension'):
+                    if elem.text == ext:
+                        if action:
+                            chrome.click_element_below(element, 'span.fileactions a[data-action=menu]')
+                            chrome.click_element('div.fileActionsMenu.open a[data-action={}]'.format(action))
+                        else:
+                            elem.click()
+                        found = True
+    if not found:
+        raise RuntimeError('Did not find {}{}'.format(document_title, ext))
+    time.sleep(4)
+
+
+def _add_doc(chrome, document_title):
+    chrome.click_element('.icon.icon-add')
+    chrome.click_element('[data-filetype=docx]')
+    chrome.enter_input_element('[data-filetype=docx] input[type=text]', document_title)
+    chrome.enter_return()
+    time.sleep(3)
+
+
+def _add_doc_nextcloud(chrome, document_title):
+    chrome.click_element('.icon.icon-add')
+    time.sleep(2)
+    chrome.save_screenshot('1')
+    # click on "a" element with attribute "data-templatename" and value "New document.docx" using css selector
+    chrome.click_element('.icon.icon-onlyoffice-new-docx')
+    chrome.save_screenshot('2')
+    time.sleep(3)
+    chrome.enter_input_element('.menuitem.active input[type=text]', document_title + ".docx")
+    chrome.save_screenshot('2')
+    time.sleep(6)
+    chrome.enter_return()
+    time.sleep(6)
+
+
+def _enter_text_in_onlyoffice_nextcloud(chrome, document_content):
+    time.sleep(10)
+    chrome.send_keys(document_content)
+    time.sleep(10)
+    # chrome.send_keys(Keys.CONTROL + 's')
+    element = chrome.driver.find_element_by_xpath("//li[@data-app-id='files']")
+    element.click()
+    time.sleep(1)
+
+
+def _enter_text_in_onlyoffice(chrome, document_content):
+    time.sleep(10)
+    chrome.change_tab(-1)
+    with chrome.switched_frame('iframe[name=frameEditor]'):
+        chrome.click_element('#id_viewer_overlay')
+        chrome.send_keys(document_content)
+        time.sleep(10)
+    # element = chrome.driver.find_element_by_xpath("//li[@data-id='files']")
+    # element.click()
+    chrome.close_tab()
+    chrome.change_tab(-1)
+    time.sleep(1)
+
+
+def _login(chrome, user):
+    chrome.enter_input('user', user.properties['username'])
+    chrome.enter_input('password', 'univention')
+    chrome.click_element('#submit')
+    time.sleep(2)
+
+
+def test_nextcloud(chrome, users):
+    subprocess.check_call(
+        'univention-app shell nextcloud sudo -u www-data php /var/www/html/occ config:system:set allow_local_remote_servers --type boolean --value true'.split(' ')
+    )
+    with chrome.capture('onlyoffice_nextcloud'):
+        from selenium.webdriver.support import expected_conditions as EC
+        from selenium.webdriver.support.ui import WebDriverWait as wait
+        from selenium.webdriver.common.by import By
+        from selenium.common.exceptions import TimeoutException
+        user = users('onlyoffice', {'nextcloudEnabled': True})
+        document_title = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+        document_content = 'This is some test content...'
+        chrome.goto_portal()
+        try:
+            chrome.click_portal_tile(u'Nextcloud')
+        except Exception:
+            chrome.click_portal_tile(u'Nextcloud Hub')
+        # login
+        time.sleep(2)
+        if chrome.find_first('.login-option:first-of-type'):
+            chrome.click_element('.login-option:first-of-type')
+        time.sleep(2)
+        chrome.enter_input('user', user.properties['username'])
+        chrome.enter_input('password', 'univention')
+        chrome.enter_return()
+        # first run wizard
+        try:
+            wait(chrome.driver, 30).until(EC.element_to_be_clickable((By.ID, 'firstrunwizard')))
+            chrome.driver.execute_script("document.getElementById('firstrunwizard').getElementsByTagName('button')[1].click()")
+            time.sleep(5)
+        except TimeoutException:
+            pass
+
+        # go to files
+        element = chrome.driver.find_element_by_xpath("//li[@data-app-id='files']")
+        element.click()
+        time.sleep(10)
+        _add_doc_nextcloud(chrome, document_title)
+        time.sleep(4)
+        # _use_document(chrome, document_title, '.docx')
+        time.sleep(10)
+        _enter_text_in_onlyoffice_nextcloud(chrome, document_content)
+        #  see https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/59
+        time.sleep(30)
+        _use_document_nextcloud(chrome, document_title, '.docx', 'Download')
+        path = pathlib.Path('~').expanduser() / 'Downloads' / '{}.docx'.format(document_title)
+        with zipfile.ZipFile(str(path), 'r') as myzip:
+            with myzip.open('word/document.xml') as myfile:
+                assert document_content in str(myfile.read())
+
+
+def test_owncloud(chrome, users):
+    with chrome.capture('onlyoffice_owncloud'):
+        user = users('onlyoffice', {'owncloudEnabled': True})
+        document_title = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+        document_content = 'This is some test content...'
+        chrome.goto_portal()
+        chrome.click_portal_tile(u'ownCloud')
+        time.sleep(2)
+        _login(chrome, user)
+        if chrome.find_first('#closeWizard'):
+            # very first login of this user will show a tutorial
+            chrome.click_element('#closeWizard')
+            time.sleep(1)
+        time.sleep(10)
+        _add_doc(chrome, document_title)
+        time.sleep(10)
+        _enter_text_in_onlyoffice(chrome, document_content)
+        # after text is entered, visit the nextcloud start page again. We used
+        # to have a close button in OnlyOffice until a recent update.
+        chrome.click_element('a#owncloud')
+        time.sleep(30)
+        _use_document_owncloud(chrome, document_title, '.docx', 'Download')
+        path = pathlib.Path('~').expanduser() / 'Downloads' / '{}.docx'.format(document_title)
+        with zipfile.ZipFile(str(path), 'r') as myzip:
+            with myzip.open('word/document.xml') as myfile:
+                assert document_content in str(myfile.read())
+
+
+if __name__ == '__main__':
+    test_lib.run_test_file(__file__)
