@@ -15,6 +15,7 @@ env:
   app: 5.0/onlyoffice-ds
   appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
   community_ini_path: Community/onlyoffice-ds.ini
+  command: ./univention-appcenter-control
   
 jobs:
   run-script:
@@ -34,10 +35,10 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control new-version $login $app $appver
+         $command new-version $login $app $appver
          sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' $community_ini_path
          sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
-         ./univention-appcenter-control upload $login --noninteractive $appver \
+         $command upload $login --noninteractive $appver \
            Community/LICENSE_AGREEMENT_EN \
            Community/LICENSE_AGREEMENT_DE \
            Community/README_APPLIANCE_EN \
