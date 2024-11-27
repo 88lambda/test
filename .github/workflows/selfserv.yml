@@ -33,20 +33,20 @@ jobs:
          sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' Community/onlyoffice-ds.ini
          sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' Community/onlyoffice-ds.ini
          ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=${{ inputs.ver }} \
-           \Community/LICENSE_AGREEMENT_EN
-           \Community/LICENSE_AGREEMENT_DE
-           \Community/README_APPLIANCE_EN
-           \Community/README_APPLIANCE_DE
-           \Community/README_EN
-           \Community/README_DE
-           \Community/appliance_umc_header_logo.svg
-           \Community/appliance_portal_logo.svg
-           \Community/appliance_logo.svg
-           \Community/logo_detail_page.svg
-           \Resources/logo.svg
-           \Community/onlyoffice-ds.ini
-           \Community/preinst
-           \Community/setup
-           \Community/inst
-           \Community/test
+           Community/LICENSE_AGREEMENT_EN \
+           Community/LICENSE_AGREEMENT_DE \
+           Community/README_APPLIANCE_EN \
+           Community/README_APPLIANCE_DE \
+           Community/README_EN \
+           Community/README_DE \
+           Community/appliance_umc_header_logo.svg \
+           Community/appliance_portal_logo.svg \
+           Community/appliance_logo.svg \
+           Community/logo_detail_page.svg \
+           Resources/logo.svg \
+           Community/onlyoffice-ds.ini \
+           Community/preinst \
+           Community/setup \
+           Community/inst \
+           Community/test
            
