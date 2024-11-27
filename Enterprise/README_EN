@@ -1,0 +1,76 @@
+<p>
+	To start using ONLYOFFICE Docs Enterprise Edition with Nextcloud, ownCloud or Seafile, you have to install the respective app and enable the ONLYOFFICE plugin in either app.
+</p>
+<p>
+	<b>Note</b>: You have to uninstall the community version of&nbsp;ONLYOFFICE Docs from UCS before installing ONLYOFFICE Docs Enterprise Edition to avoid conflicts between the solutions. Several instances and solutions of ONLYOFFICE cannot be hosted together within UCS.
+</p>
+<p>
+	The address to the document server has to be configured inside the plugin. Pleaes note that the parameter <b> documentserver </b> is the name (FQDN, without a port number) of the server with the ONLYOFFICE Docs Enterprise Edition installed. The address must be accessible for the user browser and from the respective Nextcloud, ownCloud or Seafile server. The server address must also be accessible from ONLYOFFICE Docs Enterprise Edition for operating correctly.
+</p>
+<pre>
+    https://&lt;documentserver&gt;/onlyoffice-documentserver
+</pre>
+<p>
+	It is necessary that you open the storage applications like Nextcloud, ownCloud or Seafile with hostname of the UCS system and not with the IP address in the addressbar of your browser. Otherwise, ONLYOFFICE can't open the documents.
+</p>
+<h3>
+	Configuration of ONLYOFFICE plugin in Nextcloud
+</h3>
+<p>
+	When Nextcloud is installed on the same system as ONLYOFFICE, the necessary ONLYOFFICE plugin is activated and configured automatically in Nextcloud.
+</p>
+<p>
+	If you want to check or change the configuration or when the apps are installed on different systems, follow these steps:
+</p>
+<ul>
+	<li>
+		Login to Nextcloud as user <i> Administrator</i>.
+	</li>
+	<li>
+		Goto <i> Apps </i> → <i> Office &amp; Text </i> → enable <i> ONLYOFFICE</i>.
+	</li>
+	<li>
+		Goto <i> Admin </i> settings and look for <i> ONLYOFFICE</i>. There enter the address above to connect the ONLYOFFICE document server and click on <i> Save</i>.
+	</li>
+</ul>
+<h3>
+	Configuration of ONLYOFFICE plugin in ownCloud
+</h3>
+<p>
+	When ownCloud is installed on the same system as ONLYOFFICE, the necessary ONLYOFFICE plugin is activated and configured automatically in ownCloud.
+</p>
+<p>
+	If you want to check or change the configuration or when the apps are installed on different systems, follow these steps:
+</p>
+<ul>
+	<li>
+		If ownCloud is not installed yet, goto the App Center, select ownCloud and install it.
+	</li>
+	<li>
+		Login to ownCloud as admin user (username <i> owncloud </i> ).
+	</li>
+	<li>
+		Goto <i> Settings </i> → <i> Admin Apps </i> → <i> Show disabled Apps </i> → <i> [Enable] ONLYOFFICE </i>
+	</li>
+	<li>
+		Goto <i> Settings </i> → <i> Admin </i> → <i> Additional </i> → <i> ONLYOFFICE </i> : Check the setting for Document Editing Service. By default it is set to the UCS host, where ownCloud is installed.
+	</li>
+</ul>
+<h3>
+	Configuration of ONLYOFFICE plugin in Seafile
+</h3>
+<p>
+	When Seafile is installed on the same system as ONLYOFFICE, the necessary ONLYOFFICE plugin is activated and configured automatically in Seafile.
+</p>
+<h3>
+	Registration of ONLYOFFICE Integration Edition
+</h3>
+<p>
+	If you bought&nbsp;<b>Docs Enterprise Edition</b><b>&nbsp;</b>and received the <b> license.lic </b> file, to obtain the software full version you need to place it on your UCS host system where ONLYOFFICE is installed using this path:
+</p>
+<p>
+	<i> /var/lib/univention-appcenter/apps/onlyoffice-ds-integration/Data/license.lic</i>.
+</p>
+<p>
+	After that your version of <b>Docs Enterprise Edition&nbsp;</b>will become registered and full-featured.
+</p>

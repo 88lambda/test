@@ -1,0 +1,79 @@
+<p>
+	Um die ONLYOFFICE Docs Enterprise Edition mit Nextcloud, ownCloud oder Seafile nutzen zu können, müssen Sie die entsprechende Anwendung installieren und das ONLYOFFICE Plugin in einer der Anwendungen aktivieren.
+</p>
+<p>
+	<b>Hinweis</b>: Sie müssen die Community-Version des ONLYOFFICE Docs von UCS vor der Installation der ONLYOFFICE Integration Edition deinstallieren, um Konflikte zwischen den Lösungen zu vermeiden. Mehrere Instanzen und Lösungen von ONLYOFFICE können nicht zusammen innerhalb von UCS gehostet werden.
+</p>
+<p>
+	Die Adresse zum Dokumentenserver muss innerhalb des Plugins konfiguriert werden. Bitte beachten Sie, dass der Parameter <b> Dokumentenserver </b> der Name (FQDN, ohne Port-Nummer) des Servers ist, auf dem die ONLYOFFICE Docs Enterprise Edition installiert ist. Die Adresse muss für den Browser des Benutzers und vom jeweiligen Nextcloud-, ownCloud- oder Seafile-Server aus erreichbar sein. Die Server-Adresse muss auch von der ONLYOFFICE Docs Enterprise Edition aus erreichbar sein, um korrekt zu funktionieren.
+</p>
+<pre>
+    https://&lt;documentserver&gt;/onlyoffice-documentserver
+</pre>
+<p>
+	Es ist notwendig, dass Sie die Storage Applikationen wie Nextcloud, ownCloud oder Seafile mit dem Hostnamen des UCS-Systems und nicht über der IP-Adresse in der Adresszeile Ihres Browsers öffnen. Andernfalls kann ONLYOFFICE die Dokumente nicht öffnen.
+</p>
+<h3>
+	Konfiguration des ONLYOFFICE-Plugins in Nextcloud
+</h3>
+<p>
+	Wenn Nextcloud auf dem gleichen System wie ONLYOFFICE installiert wird, wird das notwendige ONLYOFFICE-Plugin automatisch in Nextcloud aktiviert und konfiguriert.
+</p>
+<p>
+	Wenn Sie die Konfiguration überprüfen oder ändern möchten oder wenn die Anwendungen auf verschiedenen Systemen installiert sind, befolgen Sie diese Schritte:
+</p>
+<ul>
+	<li>
+		Anmeldung bei Nextcloud als Benutzer <i> Verwalter </i> .
+	</li>
+	<li>
+		Gehe zu <i> Anwendungen </i> → <i>Office &amp; Text </i> → aktivieren <i>ONLYOFFICE</i> .
+	</li>
+	<li>
+		Gehe zu <i> Verwaltung </i> Einstellungen und suchen Sie nach <i>ONLYOFFICE</i> . Geben Sie dort die obige Adresse ein, um den ONLYOFFICE-Dokumentenserver zu verbinden, und klicken Sie auf <i> Speichern</i>.
+	</li>
+</ul>
+<h3>
+	Konfiguration des ONLYOFFICE-Plugins in ownCloud
+</h3>
+<p>
+	Wenn ownCloud auf dem gleichen System wie ONLYOFFICE installiert wird, wird das notwendige ONLYOFFICE-Plugin automatisch in ownCloud aktiviert und konfiguriert.
+</p>
+<p>
+	Wenn Sie die Konfiguration überprüfen oder ändern möchten oder wenn die Anwendungen auf verschiedenen Systemen installiert sind, befolgen Sie diese Schritte:
+</p>
+<ul>
+	<li>
+		Wenn ownCloud noch nicht installiert ist, gehen Sie zum App Center, wählen Sie ownCloud und installieren Sie es.
+	</li>
+	<li>
+		Anmeldung bei ownCloud als Admin-Benutzer (Benutzername <i>owncloud</i>).
+	</li>
+	<li>
+		Gehe zu <i> Einstellungen </i> → <i> Admin Apps </i> → <i> Deaktivierte Apps anzeigen </i> → <i> [Aktivieren] ONLYOFFICE </i>
+	</li>
+	<li>
+		Gehe zu <i> Einstellungen </i> → <i> Verwaltung </i> → <i> Zusätzlich </i> → <i>ONLYOFFICE</i>: Überprüfen Sie die Einstellung für den Service zur Bearbeitung von Dokumenten. Standardmäßig ist sie auf den UCS-Host eingestellt, auf dem ownCloud installiert ist.
+	</li>
+</ul>
+<h3>
+	Konfiguration des ONLYOFFICE-Plugins in Seafile
+</h3>
+<p>
+	Wenn Seafile auf demselben System wie ONLYOFFICE installiert ist, wird das notwendige ONLYOFFICE-Plugin automatisch in Seafile aktiviert und konfiguriert.
+</p>
+<h3>
+	Registrierung der ONLYOFFICE-Integrationsausgabe
+</h3>
+<p>
+	Wenn Sie  die <b>Docs Enterprise Edition&nbsp;</b>erworben haben, erhalten Sie die <b> license.lic </b> Datei, um die Integration Edition freizuschalten. Dazu müssen Sie die Datei auf dem UCS Host-System, auf dem ONLYOFFICE installiert ist, in folgendem Pfad ablegen:
+</p>
+<p>
+	<b></b>
+</p>
+<p>
+	<i> /var/lib/univention-appcenter/apps/onlyoffice-</i><i>ds-integration/Data/license.lic</i>.
+</p>
+<p>
+	Danach wird Ihre Version der&nbsp;<b>Docs Enterprise Edition</b>&nbsp;registriert und mit allen Funktionen ausgestattet.
+</p>

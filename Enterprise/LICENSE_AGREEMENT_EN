@@ -1,0 +1,451 @@
+&nbsp;&nbsp; IMPORTANT - READ CAREFULLY: BY INSTALLING, DOWNLOADING OR OTHERWISE&nbsp; USING
+<br>
+&nbsp;&nbsp; ONLYOFFICE AND ANY RELATED DOCUMENTATION, YOU, ON BEHALF OF YOURSELF OR AS
+<br>
+&nbsp;&nbsp; AN AUTHORIZED REPRESENTATIVE ON BEHALF OF AN ENTITY (“LICENSEE”) AGREE&nbsp; TO
+<br>
+&nbsp;&nbsp; ALL THE&nbsp; TERMS&nbsp; OF&nbsp; THIS&nbsp; ONLYOFFICE&nbsp; COMMERCIAL&nbsp; LICENSE&nbsp; AGREEMENT&nbsp; (THE
+<br>
+&nbsp;&nbsp; “AGREEMENT”) REGARDING&nbsp; YOUR USE&nbsp; OF ONLYOFFICE&nbsp; INTEGRATION EDITION.&nbsp; YOU
+<br>
+&nbsp;&nbsp; REPRESENT AND&nbsp; WARRANT THAT&nbsp; YOU HAVE&nbsp; FULL LEGAL&nbsp; AUTHORITY TO&nbsp; BIND&nbsp; THE
+<br>
+&nbsp;&nbsp; LICENSEE TO THIS AGREEMENT. IF YOU DO&nbsp; NOT AGREE WITH ALL OF THESE&nbsp; TERMS,
+<br>
+&nbsp;&nbsp; DO NOT INSTALL, DOWNLOAD OR OTHERWISE USE ONLYOFFICE.
+<br>
+<br>
+&nbsp;&nbsp; Definitions
+<br>
+<br>
+&nbsp;&nbsp; “ONLYOFFICE&nbsp; Document&nbsp; Server”&nbsp;means&nbsp;open-source&nbsp; office&nbsp; server&nbsp; software
+<br>
+&nbsp;&nbsp; provided by Ascensio System SIA,&nbsp; its object code, binary codes,&nbsp; compiled
+<br>
+&nbsp;&nbsp; object code as&nbsp; well as&nbsp; any related&nbsp; documentation. The&nbsp; source codes&nbsp; of
+<br>
+&nbsp;&nbsp; ONLYOFFICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Document&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; are&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; published
+<br>
+&nbsp;&nbsp; at&nbsp;https://github.com/ONLYOFFICE&nbsp;under&nbsp; AGPL&nbsp;&nbsp; v.3&nbsp; license&nbsp;and&nbsp;&nbsp; can&nbsp;&nbsp; be
+<br>
+&nbsp;&nbsp; modified&nbsp;at any time without prior notice.
+<br>
+<br>
+&nbsp;&nbsp; “ONLYOFFICE Integration Edition”&nbsp;means an advanced version of&nbsp;&nbsp; ONLYOFFICE
+<br>
+&nbsp;&nbsp; Document&nbsp; Server&nbsp;for&nbsp;professional&nbsp;&nbsp; functions&nbsp; of&nbsp;&nbsp; document&nbsp; editing&nbsp;&nbsp; in
+<br>
+&nbsp;&nbsp; accordance with the description on the official site www.onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; “ONLYOFFICE”&nbsp;means&nbsp; all&nbsp; software&nbsp;provided&nbsp;&nbsp; by&nbsp; Ascensio&nbsp; System&nbsp;&nbsp; SIA&nbsp;in
+<br>
+&nbsp;&nbsp; accordance with the official site at www.onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; “Effective Date”&nbsp;is&nbsp; the date&nbsp; on which&nbsp; you click&nbsp; “I accept”&nbsp; button&nbsp; or
+<br>
+&nbsp;&nbsp; otherwise installs, downloads or uses ONLYOFFICE.
+<br>
+<br>
+&nbsp;&nbsp; “License Key”&nbsp;means a&nbsp; computer file&nbsp; containing a&nbsp; unique combination&nbsp; of
+<br>
+&nbsp;&nbsp; characters that allows you to use ONLYOFFICE Integration Edition.
+<br>
+<br>
+&nbsp;&nbsp; “License Fee”&nbsp;means a regular payment&nbsp; by you to us&nbsp; for the right to&nbsp; use
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition.
+<br>
+&nbsp;&nbsp; &quot;Platform&quot; means&nbsp; a software&nbsp; environment&nbsp; that is&nbsp; used for&nbsp; storing&nbsp; and
+<br>
+&nbsp;&nbsp; managing your files, installed on your server hardware and integrated with
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 1. License Grant
+<br>
+<br>
+&nbsp;&nbsp; 1.1. You are hereby granted&nbsp; a non-exclusive, non-transferable license&nbsp; to
+<br>
+&nbsp;&nbsp; install and use&nbsp; ONLYOFFICE Integration&nbsp; Edition in&nbsp; accordance with&nbsp; this
+<br>
+&nbsp;&nbsp; Agreement.
+<br>
+<br>
+&nbsp;&nbsp; 1.2. We&nbsp; reserve&nbsp; all rights&nbsp; not&nbsp; expressly&nbsp; granted to&nbsp; you&nbsp; under&nbsp; this
+<br>
+&nbsp;&nbsp; Agreement.
+<br>
+<br>
+&nbsp;&nbsp; 1.3. Nothing in&nbsp; this Agreement shall&nbsp; limit our rights&nbsp; to use,&nbsp; license,
+<br>
+&nbsp;&nbsp; sublicense or&nbsp; otherwise&nbsp; exploit&nbsp; ONLYOFFICE Integration&nbsp; Edition&nbsp; or&nbsp; to
+<br>
+&nbsp;&nbsp; permit third parties to do so.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 2. Ownership
+<br>
+<br>
+&nbsp;&nbsp; Please note that this is a license agreement and not a sales contract.&nbsp; We
+<br>
+&nbsp;&nbsp; reserve all intellectual&nbsp; property rights to&nbsp; ONLYOFFICE and its&nbsp; original
+<br>
+&nbsp;&nbsp; components including trademarks and related confidential information.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 3. Payment and Taxes
+<br>
+<br>
+&nbsp;&nbsp; 3.1. In order&nbsp; to use ONLYOFFICE&nbsp; Integration Edition you&nbsp; shall pay us&nbsp; a
+<br>
+&nbsp;&nbsp; License fee. The&nbsp; License Fee is&nbsp; payable according to&nbsp; the selected&nbsp; plan
+<br>
+&nbsp;&nbsp; listed on the official site www.onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; 3.2. Upon receiving the License Fee we&nbsp; will send you a License Key&nbsp; along
+<br>
+&nbsp;&nbsp; with instructions on&nbsp; how to install&nbsp; and activate ONLYOFFICE&nbsp; Integration
+<br>
+&nbsp;&nbsp; Edition.
+<br>
+<br>
+&nbsp;&nbsp; 3.3. You should activate&nbsp; your copy of&nbsp; ONLYOFFICE Integration Edition&nbsp; by
+<br>
+&nbsp;&nbsp; activating the License Key sent. You must use one License Key per one copy
+<br>
+&nbsp;&nbsp; of ONLYOFFICE Integration Edition&nbsp; integrated into one Platform&nbsp; installed
+<br>
+&nbsp;&nbsp; on your server hardware.
+<br>
+<br>
+&nbsp;&nbsp; 3.4.&nbsp;Every&nbsp; License&nbsp; Key&nbsp; is&nbsp; limited&nbsp;by&nbsp; specific&nbsp; number&nbsp; of&nbsp; concurrent
+<br>
+&nbsp;&nbsp; connections to Document&nbsp; Server; this configuration&nbsp; is defined for&nbsp; every
+<br>
+&nbsp;&nbsp; pricing plan on the official website www.onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; 3.5.&nbsp;If you are not satisfied with our product and terminate the Agreement
+<br>
+&nbsp;&nbsp; within 30 days&nbsp; from the Effective&nbsp; Date we will&nbsp; return you your&nbsp; License
+<br>
+&nbsp;&nbsp; Fee; otherwise, this Fee shall be considered non-recoverable.
+<br>
+<br>
+&nbsp;&nbsp; 3.6. You are granted&nbsp; updates and support&nbsp; for your version&nbsp; of&nbsp;ONLYOFFICE
+<br>
+&nbsp;&nbsp; Integration Edition&nbsp;for the period defined&nbsp; by the pricing plan&nbsp; selected.
+<br>
+&nbsp;&nbsp; After this period you may&nbsp; continue to use ONLYOFFICE Integration&nbsp; Edition
+<br>
+&nbsp;&nbsp; in its full functionality. You&nbsp; may&nbsp;prolong the right for getting&nbsp; support
+<br>
+&nbsp;&nbsp; and&nbsp; updates&nbsp; for&nbsp; ONLYOFFICE&nbsp;&nbsp; Integration&nbsp; Edition&nbsp; by&nbsp; purchasing&nbsp;&nbsp; the
+<br>
+&nbsp;&nbsp; appropriate pricing plan from our official website www.onlyoffice.com&nbsp; and
+<br>
+&nbsp;&nbsp; activating the new License Key on your server.
+<br>
+<br>
+&nbsp;&nbsp; 3.7. We&nbsp;shall have the right to modify&nbsp; the amount of the License Fee&nbsp; for
+<br>
+&nbsp;&nbsp; any future period&nbsp; of using&nbsp;ONLYOFFICE Integration&nbsp; Edition&nbsp;by you at&nbsp; any
+<br>
+&nbsp;&nbsp; time without prior notice.
+<br>
+&nbsp;&nbsp; 3.8 We offer&nbsp; a special&nbsp; tariff plan ONLYOFFICE&nbsp; Integration Edition&nbsp; Home
+<br>
+&nbsp;&nbsp; Server for non-commercial home use&nbsp; under certain conditions. The&nbsp; Licence
+<br>
+&nbsp;&nbsp; grants you the right to use ONLYOFFICE Integration Edition on 1 server for
+<br>
+&nbsp;&nbsp; non-commercial purposes only.
+<br>
+&nbsp;&nbsp; 3.9 ONLYOFFICE&nbsp; Integration&nbsp; Edition&nbsp; Home&nbsp; Server&nbsp; may&nbsp; not&nbsp; be&nbsp; used&nbsp; on
+<br>
+&nbsp;&nbsp; computers belonging&nbsp; to any&nbsp; legal entity&nbsp; (including but&nbsp; not limited&nbsp; to
+<br>
+&nbsp;&nbsp; companies of any types, enterprises, government organizations, etc.)
+<br>
+&nbsp;&nbsp; 3.10 You agree not to transfer,&nbsp; assign, rent, lease, sublicense, or&nbsp; lend
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition Home&nbsp; Server to any&nbsp; other person or&nbsp; legal
+<br>
+&nbsp;&nbsp; entity.
+<br>
+<br>
+&nbsp;&nbsp; 3.11. We&nbsp;can offer&nbsp;ONLYOFFICE Integration&nbsp; Edition for free under&nbsp; certain
+<br>
+&nbsp;&nbsp; conditions. These conditions can cover&nbsp; specific pricing plans, limit&nbsp; the
+<br>
+&nbsp;&nbsp; number of users, term of the License&nbsp; Key or any other options and can&nbsp; be
+<br>
+&nbsp;&nbsp; published on our official website www.onlyoffice.com, any&nbsp;&nbsp;other&nbsp; websites
+<br>
+&nbsp;&nbsp; or offered to you personally in any possible way.
+<br>
+<br>
+&nbsp;&nbsp; 3.9. In a free copy of ONLYOFFICE Integration Edition we&nbsp;reserve the right
+<br>
+&nbsp;&nbsp; to&nbsp;use Google Analytics or&nbsp; any other services for&nbsp; web analytics and&nbsp; add
+<br>
+&nbsp;&nbsp; any advertising materials into such free copy. If you pay us a License Fee
+<br>
+&nbsp;&nbsp; and insert&nbsp; your&nbsp; new&nbsp; License&nbsp; Key into&nbsp; your&nbsp; free&nbsp; copy&nbsp; of&nbsp; ONLYOFFICE
+<br>
+&nbsp;&nbsp; Integration Edition we guarantee that no services for web analytics may be
+<br>
+&nbsp;&nbsp; used or&nbsp; any&nbsp; advertising materials&nbsp; may&nbsp; be&nbsp; presented in&nbsp; your&nbsp; copy&nbsp; of
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition as long as your License Key is valid.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 4. Restrictions on Use
+<br>
+<br>
+&nbsp;&nbsp; 4.1. You&nbsp; may not&nbsp; use ONLYOFFICE&nbsp; as a&nbsp; public SaaS&nbsp; solution under&nbsp; this
+<br>
+&nbsp;&nbsp; Agreement.
+<br>
+<br>
+&nbsp;&nbsp; 4.2. You cannot modify the source code, binary codes, object codes&nbsp; and/or
+<br>
+&nbsp;&nbsp; resource files&nbsp; comprising ONLYOFFICE&nbsp; in&nbsp; any way&nbsp; including&nbsp; alteration,
+<br>
+&nbsp;&nbsp; removing&nbsp; or&nbsp; obscuring&nbsp; copyright,&nbsp; patent,&nbsp; trademark,&nbsp; and&nbsp; attribution
+<br>
+&nbsp;&nbsp; notices contained therein.
+<br>
+<br>
+&nbsp;&nbsp; 4.3. You&nbsp; may&nbsp; not&nbsp; copy functions,&nbsp; features,&nbsp; authentic&nbsp; components&nbsp; and
+<br>
+&nbsp;&nbsp; graphic elements of ONLYOFFICE.
+<br>
+<br>
+&nbsp;&nbsp; 4.4. You may not interfere with or disrupt the integrity or performance of
+<br>
+&nbsp;&nbsp; ONLYOFFICE or any data contained therein.
+<br>
+<br>
+&nbsp;&nbsp; 4.5. You may not&nbsp; remove, obscure or interfere&nbsp; with any logo,&nbsp; copyright,
+<br>
+&nbsp;&nbsp; attribution, trademark notice,&nbsp; warning or&nbsp; disclaimer statements&nbsp; annexed
+<br>
+&nbsp;&nbsp; to, incorporated in or otherwise applied to ONLYOFFICE.
+<br>
+<br>
+&nbsp;&nbsp; 4.6. You are not permitted to use trade names, trademarks, service&nbsp; marks,
+<br>
+&nbsp;&nbsp; or product names of Ascensio System SIA, except as required for reasonable
+<br>
+&nbsp;&nbsp; and customary use of ONLYOFFICE.
+<br>
+<br>
+&nbsp;&nbsp; 4.7.&nbsp;You may&nbsp; not&nbsp; install&nbsp; and&nbsp; run&nbsp; an&nbsp; ONLYOFFICE&nbsp; Integration&nbsp; Edition
+<br>
+&nbsp;&nbsp; server&nbsp;software instance in more&nbsp; than one physical&nbsp; location at the&nbsp; same
+<br>
+&nbsp;&nbsp; time, or on more than one active Virtual&nbsp;Machine at the same time, per one
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition license purchased.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 5. Support and services
+<br>
+<br>
+&nbsp;&nbsp; 5.1. We will provide you&nbsp; with consulting help&nbsp;and updates for&nbsp; ONLYOFFICE
+<br>
+&nbsp;&nbsp; Integration Edition once they are&nbsp; available&nbsp;during the period defined&nbsp; by
+<br>
+&nbsp;&nbsp; the pricing plan selected&nbsp;from the Effective Date.
+<br>
+<br>
+&nbsp;&nbsp; 5.2. Our services include
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;provision of updates for ONLYOFFICE Integration Edition once they&nbsp; are
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; available&nbsp;during the period defined by the pricing plan selected,
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; •&nbsp;technical consulting services&nbsp;during the period defined by the pricing
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plan selected.
+<br>
+<br>
+&nbsp;&nbsp; 5.3. All the services are provided via e-mail.
+<br>
+<br>
+&nbsp;&nbsp; 5.4. If you&nbsp; need consulting&nbsp; help when using&nbsp; ONLYOFFICE you&nbsp; may file&nbsp; a
+<br>
+&nbsp;&nbsp; request by writing a letter to server@onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; 5.5. We do not provide&nbsp;technical&nbsp; consulting services for the versions&nbsp; of
+<br>
+&nbsp;&nbsp; ONLYOFFICE Integration Edition provided&nbsp; for free and Integration&nbsp; Edition
+<br>
+&nbsp;&nbsp; Home Server.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 6. Additional Restrictions
+<br>
+<br>
+&nbsp;&nbsp; 6.1. You&nbsp; should not&nbsp; make&nbsp; your License&nbsp; Key(s)&nbsp; available to&nbsp; any&nbsp; third
+<br>
+&nbsp;&nbsp; persons that do&nbsp; not have access&nbsp; to your copy&nbsp; of ONLYOFFICE. You&nbsp; should
+<br>
+&nbsp;&nbsp; take any reasonable&nbsp; measures with a&nbsp; view to prevent&nbsp; such third&nbsp; persons
+<br>
+&nbsp;&nbsp; from receiving your License Key(s).
+<br>
+<br>
+&nbsp;&nbsp; 6.2. You must use one License&nbsp; Key per one copy of ONLYOFFICE&nbsp; Integration
+<br>
+&nbsp;&nbsp; Edition depending on your pricing plan.
+<br>
+<br>
+&nbsp;&nbsp; 6.3. You&nbsp; should&nbsp; not&nbsp; try&nbsp; to&nbsp; disassemble,&nbsp; reverse&nbsp; engineer,&nbsp; analyze,
+<br>
+&nbsp;&nbsp; decompile or convert your copy of ONLYOFFICE Integration Edition or permit
+<br>
+&nbsp;&nbsp; third parties to do so.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 7. Term and Termination
+<br>
+<br>
+&nbsp;&nbsp; 7.1. Your License for ONLYOFFICE Integration Edition is perpetual. You are
+<br>
+&nbsp;&nbsp; granted the&nbsp; right&nbsp; to get&nbsp; free&nbsp; updates and&nbsp; support&nbsp;during&nbsp; the&nbsp; period
+<br>
+&nbsp;&nbsp; defined by&nbsp; the&nbsp; pricing&nbsp; plan&nbsp; selected&nbsp;by you&nbsp; in&nbsp; accordance&nbsp; with&nbsp; our
+<br>
+&nbsp;&nbsp; official site at www.onlyoffice.com.
+<br>
+<br>
+&nbsp;&nbsp; 7.2. You may cease to use ONLYOFFICE Integration Edition at any time.
+<br>
+<br>
+&nbsp;&nbsp; 7.3. We may deprive you of the right to use ONLYOFFICE Integration Edition
+<br>
+&nbsp;&nbsp; if you do not comply with this Agreement.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 8. Disclaimer of Warranty
+<br>
+<br>
+&nbsp;&nbsp; ONLYOFFICE IS PROVIDED “AS IS,” WITHOUT&nbsp; WARRANTY OF ANY KIND, EXPRESS&nbsp; OR
+<br>
+&nbsp;&nbsp; IMPLIED, INCLUDING BUT NOT LIMITED&nbsp; TO THE WARRANTIES OF&nbsp; MERCHANTABILITY,
+<br>
+&nbsp;&nbsp; FITNESS FOR A PARTICULAR PURPOSE&nbsp; AND NON-INFRINGEMENT. IN NO EVENT&nbsp; SHALL
+<br>
+&nbsp;&nbsp; ASCENSIO SYSTEM SIA OR THE&nbsp; AUTHORS OR&nbsp;COPYRIGHT HOLDERS IN ONLYOFFICE&nbsp; BE
+<br>
+&nbsp;&nbsp; LIABLE FOR&nbsp; ANY CLAIM,&nbsp; DAMAGES&nbsp; (INCLUDING, WITHOUT&nbsp; LIMITATION,&nbsp; DIRECT,
+<br>
+&nbsp;&nbsp; INDIRECT OR&nbsp; CONSEQUENTIAL&nbsp; DAMAGES) OR&nbsp; OTHER&nbsp; LIABILITY, WHETHER&nbsp; IN&nbsp; AN
+<br>
+&nbsp;&nbsp; ACTION OF&nbsp; CONTRACT,&nbsp; TORT&nbsp; OR&nbsp; OTHERWISE, ARISING&nbsp; FROM,&nbsp; OUT&nbsp; OF&nbsp; OR&nbsp; IN
+<br>
+&nbsp;&nbsp; CONNECTION WITH ONLYOFFICE OR THE USE OR OTHER DEALINGS IN ONLYOFFICE.&nbsp; IN
+<br>
+&nbsp;&nbsp; ANY CASE,&nbsp; LIABILITY OF&nbsp; ASCENSIO&nbsp; SYSTEM SIA&nbsp; FOR&nbsp; ANY DAMAGE&nbsp; CAUSED&nbsp; TO
+<br>
+&nbsp;&nbsp; LICENSEE SHALL BE LIMITED&nbsp; BY LICENSE FEES THAT&nbsp; LICENSEE HAVE PAID&nbsp; UNDER
+<br>
+&nbsp;&nbsp; THIS AGREEMENT.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 9. Limitation of Liability
+<br>
+<br>
+&nbsp;&nbsp; We are not&nbsp; responsible for&nbsp; any problems&nbsp; with ONLYOFFICE&nbsp; which are&nbsp; not
+<br>
+&nbsp;&nbsp; directly related to it.&nbsp; These problems include, but&nbsp; are not limited&nbsp; to,
+<br>
+&nbsp;&nbsp; its incompatibility&nbsp; or&nbsp; conflicts&nbsp; with any&nbsp; server&nbsp; software,&nbsp; hardware,
+<br>
+&nbsp;&nbsp; improper functioning of local network, lack of&nbsp;proper Internet connection,
+<br>
+&nbsp;&nbsp; failure to comply with&nbsp; technical specifications for ONLYOFFICE&nbsp; published
+<br>
+&nbsp;&nbsp; on www.onlyoffice.com&nbsp;etc.
+<br>
+<br>
+&nbsp;&nbsp; &nbsp;
+<br>
+<br>
+&nbsp;&nbsp; 10. Miscellaneous
+<br>
+<br>
+&nbsp;&nbsp; 10.1.&nbsp; We shall have the right to change or complement this Agreement&nbsp; for
+<br>
+&nbsp;&nbsp; any future period of using ONLYOFFICE by you at any time.
+<br>
+<br>
+&nbsp;&nbsp; 10.2.&nbsp;We shall be entitled to refer&nbsp; to the licenses and services&nbsp; already
+<br>
+&nbsp;&nbsp; provided or to&nbsp; be provided for&nbsp; you on&nbsp; our official website&nbsp; and in&nbsp; our
+<br>
+&nbsp;&nbsp; materials, as a reference&nbsp; for advertising purposes and&nbsp; use the logo&nbsp; and
+<br>
+&nbsp;&nbsp; your company name for this purpose.
+<br>
+<br>
+&nbsp;&nbsp; 10.3. If&nbsp; any&nbsp; provision&nbsp; of this&nbsp; Agreement&nbsp; is&nbsp; held to&nbsp; be&nbsp; invalid&nbsp; or
+<br>
+&nbsp;&nbsp; unenforceable, the remaining&nbsp; provisions of the&nbsp; Agreement will remain&nbsp; in
+<br>
+&nbsp;&nbsp; full force and effect.
+<br>
+<br>
+&nbsp;&nbsp; 10.4. This Agreement constitutes&nbsp; an entire agreement&nbsp; between you and&nbsp; us
+<br>
+&nbsp;&nbsp; and govern your use of ONLYOFFICE except&nbsp; and to the extent that you&nbsp; have
+<br>
+&nbsp;&nbsp; entered into a separate agreement on the subject.
+<br>
+<br>
+&nbsp;&nbsp; 10.5. This Agreement supersedes any&nbsp; prior agreements or earlier&nbsp; versions
+<br>
+&nbsp;&nbsp; of this Agreement as far as the use of ONLYOFFICE is concerned.
+<br>
+<br>
+&nbsp;&nbsp; 10.6.&nbsp; This Agreement&nbsp; shall be&nbsp; governed by and&nbsp; construed in&nbsp; accordance
+<br>
+&nbsp;&nbsp; with the&nbsp; laws&nbsp; of&nbsp; the&nbsp;Republic&nbsp; of Latvia&nbsp; which&nbsp; shall&nbsp; have&nbsp; exclusive
+<br>
+&nbsp;&nbsp; jurisdiction over all issues related to this Agreement.
