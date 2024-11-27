@@ -1,0 +1,101 @@
+#!/bin/bash
+#
+# Copyright 2017 Univention GmbH 
+#
+# http://www.univention.de/
+#
+# All rights reserved.
+#
+# The source code of this program is made available
+# under the terms of the GNU Affero General Public License version 3
+# (GNU AGPL V3) as published by the Free Software Foundation.
+#
+# Binary versions of this program provided by Univention to you as
+# well as other copyrighted, protected or trademarked materials like
+# Logos, graphics, fonts, specific documentations and configurations,
+# cryptographic keys etc. are subject to a license agreement between
+# you and Univention and not subject to the GNU AGPL V3.
+#
+# In the case you use this program under the terms of the GNU AGPL V3,
+# the program is provided in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public
+# License with the Debian GNU/Linux or Univention distribution in file
+# /usr/share/common-licenses/AGPL-3; if not, see
+# <http://www.gnu.org/licenses/>.
+
+VERSION=4
+
+. /usr/share/univention-lib/all.sh
+. /usr/share/univention-join/joinscripthelper.lib
+. /usr/share/univention-appcenter/joinscripthelper.sh
+
+eval "$(univention-config-registry shell)"
+
+joinscript_init
+
+# add service
+SERVICE="ONLYOFFICE-Document-Server"
+ucs_addServiceToLocalhost "$SERVICE" "$@"
+
+cat <<-'EOF' >"/etc/apache2/ucs-sites.conf.d/onlyoffice-ds-integration.conf"
+Define OO_DS_VPATH /onlyoffice-documentserver
+Define OO_DS_ADDRESS 127.0.0.1:5443
+
+<Location ${OO_DS_VPATH}>
+  Require all granted
+  SetEnvIf Host "^(.*)$" THE_HOST=$1
+  RequestHeader setifempty X-Forwarded-Proto https
+  RequestHeader setifempty X-Forwarded-Host %{THE_HOST}e
+  RequestHeader edit X-Forwarded-Host (.*) $1${OO_DS_VPATH}
+  ProxyAddHeaders Off
+</Location>
+
+RewriteCond %{HTTP:Upgrade} websocket [NC]
+RewriteCond %{HTTP:Connection} upgrade [NC]
+RewriteRule ^\${OO_DS_VPATH}/?(.*) "wss://${OO_DS_ADDRESS}/$1" [P,L]
+ProxyPass ${OO_DS_VPATH} "https://${OO_DS_ADDRESS}" retry=0
+ProxyPassReverse ${OO_DS_VPATH} "https://${OO_DS_ADDRESS}"
+EOF
+a2enmod proxy_wstunnel
+invoke-rc.d apache2 reload
+
+FQDN="$(ucr get hostname).$(ucr get domainname)"
+if [ "$(ucr get appcenter/apps/owncloud/status)" = "installed" ]; then
+    univention-app shell owncloud occ market:install -n onlyoffice
+    univention-app shell owncloud occ app:enable onlyoffice
+    occCode=$?
+
+    if [ ${occCode} -eq 0 ] && [ "$(univention-app shell owncloud occ config:app:get onlyoffice DocumentServerUrl)" = "" ] ; then
+        univention-app shell owncloud occ config:app:set onlyoffice DocumentServerUrl --value="https://$FQDN/onlyoffice-documentserver"
+    fi
+fi
+
+if [ "$(ucr get appcenter/apps/nextcloud/status)" = "installed" ]; then
+    univention-app shell nextcloud sudo -u www-data /var/www/html/occ app:install -n onlyoffice
+    univention-app shell nextcloud sudo -u www-data /var/www/html/occ app:enable onlyoffice
+    occCode=$?
+
+        univention-app shell nextcloud sudo -u www-data /var/www/html/occ config:app:set onlyoffice DocumentServerUrl --value="https://$FQDN/onlyoffice-documentserver"
+fi
+
+if [[ "$(ucr get appcenter/apps/seafile/status)" == "installed" ]]; then
+if grep -q -w "ONLYOFFICE_APIJS_URL" "/var/lib/univention-appcenter/apps/seafile/data/seafile-data/seafile/conf/seahub_settings.py"; then
+:
+else
+echo "FILE_SERVER_ROOT = 'http://"$FQDN"/seafhttp'
+ENABLE_ONLYOFFICE = True
+VERIFY_ONLYOFFICE_CERTIFICATE = False
+ONLYOFFICE_APIJS_URL = 'https://"$FQDN"/onlyoffice-documentserver/web-apps/apps/api/documents/api.js'
+ONLYOFFICE_FILE_EXTENSION = ('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'odt', 'fodt', 'odp', 'fodp', 'ods', 'fods')
+ONLYOFFICE_EDIT_FILE_EXTENSION = ('docx', 'pptx', 'xlsx')" >> /var/lib/univention-appcenter/apps/seafile/data/seafile-data/seafile/conf/seahub_settings.py
+univention-app restart seafile
+fi
+fi
+
+joinscript_save_current_version
+
+exit 0
