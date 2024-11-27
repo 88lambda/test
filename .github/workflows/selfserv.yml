@@ -32,7 +32,7 @@ jobs:
          ./univention-appcenter-control new-version --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds 5.0/onlyoffice-ds=${{ inputs.ver }}
          sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' Community/onlyoffice-ds.ini
          sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' Community/onlyoffice-ds.ini
-         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive ${{ inputs.ucs_ver }}/onlyoffice-ds=${{ inputs.ver }} \
+         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=${{ inputs.ver }} \
            \Community/LICENSE_AGREEMENT_EN
            \Community/LICENSE_AGREEMENT_DE
            \Community/README_APPLIANCE_EN
