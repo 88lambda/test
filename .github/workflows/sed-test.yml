@@ -32,6 +32,6 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}' Community/onlyoffice-ds.ini
-         sed -i 's|appversion|${{ inputs.ver }}' Community/onlyoffice-ds.ini
+         sed -i 's|^appversion.*|${{ inputs.ver }}|' Community/onlyoffice-ds.ini
+         sed -i 's|^imageversion.*|${{ inputs.docker_ver }}' Community/onlyoffice-ds.ini
          
