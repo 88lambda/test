@@ -10,7 +10,12 @@ on:
       docker_ver:
         description: "Docker version"
         default: "x.x.x.x"
-
+env:
+  login: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
+  app: 5.0/onlyoffice-ds
+  appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
+  community_ini_path: Community/onlyoffice-ds.ini
+  
 jobs:
   run-script:
     runs-on: ubuntu-latest
@@ -29,10 +34,10 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control new-version --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile 5.0/onlyoffice-ds 5.0/onlyoffice-ds=${{ inputs.ver }}
-         sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' Community/onlyoffice-ds.ini
-         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' Community/onlyoffice-ds.ini
-         ./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=${{ inputs.ver }} \
+         ./univention-appcenter-control new-version $login $app $appver
+         sed -i 's|^Version=.*|Version=${{ inputs.ver }}|' $community_ini_path
+         sed -i 's|^DockerImage=.*|DockerImage=onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
+         ./univention-appcenter-control upload $login --noninteractive $appver \
            Community/LICENSE_AGREEMENT_EN \
            Community/LICENSE_AGREEMENT_DE \
            Community/README_APPLIANCE_EN \
