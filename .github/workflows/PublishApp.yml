@@ -36,8 +36,8 @@ jobs:
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $command new-version $login $app $appver
-         sed -i 's|^appversion.*|${{ inputs.ver }}|' $community_ini_path
-         sed -i 's|^imageversion.*|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
+         sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
          $command upload $login --noninteractive $appver \
            Community/LICENSE_AGREEMENT_EN \
            Community/LICENSE_AGREEMENT_DE \
