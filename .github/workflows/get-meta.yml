@@ -1,11 +1,12 @@
 name: Metadata Get
 
+login=--username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
 on:
   workflow_dispatch:
     inputs:
-      name:
+      ver:
         description: "Version"
-        default: "0.0.0.0"
+        default: "8.2.1.1.x"
 
 jobs:
   run-script:
@@ -25,4 +26,4 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control get --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --json 5.0/onlyoffice-ds=8.2.1.1
+         ./univention-appcenter-control get ${login} --json 5.0/onlyoffice-ds=${{ inputs.ver }}
