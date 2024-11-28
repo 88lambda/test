@@ -12,8 +12,8 @@ on:
         default: "x.x.x.x"
 env:
   login: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
-  app-ee: 5.0/onlyoffice-ds-integration
-  appver-ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
+  app_ee: 5.0/onlyoffice-ds-integration
+  appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
   ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
   command: ./univention-appcenter-control
   
@@ -35,10 +35,10 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         $command new-version $login $app-ee $appver-ee
+         $command new-version $login $app_ee $appver_ee
          sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
-         $command upload $login --noninteractive $appver-ee \
+         $command upload $login --noninteractive $appver_ee \
            Enterprise/LICENSE_AGREEMENT_EN \
            Enterprise/LICENSE_AGREEMENT_DE \
            Enterprise/README_EN \
