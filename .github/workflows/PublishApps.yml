@@ -57,6 +57,7 @@ jobs:
            Community/preinst \
            Community/setup \
            Community/inst \
+           Community/uinst \
            Community/test
            
   publish_enterprise:
