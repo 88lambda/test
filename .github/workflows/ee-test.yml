@@ -1,0 +1,52 @@
+name: ee-test
+run-name: ee-test Publish app version ${{ inputs.ver }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "App Version"
+        default: "x.x.x.x"
+      docker_ver:
+        description: "Docker version"
+        default: "x.x.x.x"
+env:
+  login: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
+  app-ee: 5.0/onlyoffice-ds-integration
+  appver-ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
+  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
+  command: ./univention-appcenter-control
+  
+jobs:
+  publish_community:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.10'
+      
+      - name: Run script
+        run: |
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         $command new-version $login $app-ee $appver-ee
+         sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
+         $command upload $login --noninteractive $appver-ee \
+           Enterprise/LICENSE_AGREEMENT_EN \
+           Enterprise/LICENSE_AGREEMENT_DE \
+           Enterprise/README_EN \
+           Enterprise/README_DE \
+           Resources/logo.svg \
+           Enterprise/onlyoffice-ds-integration.ini \
+           Enterprise/preinst \
+           Enterprise/setup \
+           Enterprise/inst \
+           Enterprise/test \
+           Enterprise/uinst
