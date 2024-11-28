@@ -27,4 +27,4 @@ jobs:
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         ./univention-appcenter-control get $login --json 5.0/onlyoffice-ds=${{ inputs.ver }}
+         ./univention-appcenter-control get $login --json 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
