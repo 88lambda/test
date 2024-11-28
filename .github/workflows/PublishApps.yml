@@ -1,0 +1,94 @@
+name: Publish Apps
+run-name: Publish app version ${{ inputs.ver }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "Apps Version"
+        default: "x.x.x.x"
+      docker_ver:
+        description: "Image version"
+        default: "x.x.x.x"
+env:
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
+  app: 5.0/onlyoffice-ds
+  app_ee: 5.0/onlyoffice-ds-integration
+  appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
+  appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
+  community_ini_path: Community/onlyoffice-ds.ini
+  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
+  appcenterctl: ./univention-appcenter-control
+  
+jobs:
+  publish_community:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.x'
+      
+      - name: push_ce_script
+        run: |
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         $appcenterctl new-version $credentials $app $appver
+         sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
+         $appcenterctl upload $credentials --noninteractive $appver \
+           Community/LICENSE_AGREEMENT_EN \
+           Community/LICENSE_AGREEMENT_DE \
+           Community/README_APPLIANCE_EN \
+           Community/README_APPLIANCE_DE \
+           Community/README_EN \
+           Community/README_DE \
+           Community/appliance_umc_header_logo.svg \
+           Community/appliance_portal_logo.svg \
+           Community/appliance_logo.svg \
+           Community/logo_detail_page.svg \
+           Resources/logo.svg \
+           Community/onlyoffice-ds.ini \
+           Community/preinst \
+           Community/setup \
+           Community/inst \
+           Community/test
+           
+  publish_enterprise:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.x'
+      
+      - name: push_ee_script
+        run: |
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         $appcenterctl new-version $credentials $app_ee $appver_ee
+         sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
+         $appcenterctl upload $credentials --noninteractive $appver_ee \
+           Enterprise/LICENSE_AGREEMENT_EN \
+           Enterprise/LICENSE_AGREEMENT_DE \
+           Enterprise/README_EN \
+           Enterprise/README_DE \
+           Resources/logo.svg \
+           Enterprise/onlyoffice-ds-integration.ini \
+           Enterprise/preinst \
+           Enterprise/setup \
+           Enterprise/inst \
+           Enterprise/test \
+           Enterprise/uinst
+           
