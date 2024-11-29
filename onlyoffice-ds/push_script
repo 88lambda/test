@@ -1,6 +1,6 @@
 	 curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
-         $appcenterctl $credentials --pwdfile ./pwdfile $app $appver
+         $appcenterctl $credentials new-version --pwdfile ./pwdfile $app $appver
          sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
          $appcenterctl upload $credentials --noninteractive $appver \
@@ -14,10 +14,10 @@
            onlyoffice-ds/appliance_portal_logo.svg \
            onlyoffice-ds/appliance_logo.svg \
            onlyoffice-ds/logo_detail_page.svg \
-           onlyoffice-ds/logo.svg \
+           common/logo.svg \
            onlyoffice-ds/onlyoffice-ds.ini \
            onlyoffice-ds/preinst \
-           onlyoffice-ds/setup \
-           onlyoffice-ds/inst \
+           common/setup \
+           common/inst \
            onlyoffice-ds/uinst \
            onlyoffice-ds/test
