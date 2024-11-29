@@ -1,6 +1,6 @@
 	 curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
-         $appcenterctl $credentials new-version --pwdfile ./pwdfile $app $appver
+         $appcenterctl new-version $credentials $app $appver
          sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
          $appcenterctl upload $credentials --noninteractive $appver \
