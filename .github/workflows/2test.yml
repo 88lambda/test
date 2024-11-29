@@ -35,5 +35,5 @@ jobs:
       
       - name: push_script
         run: |
-         \push_script
+         \onlyoffice-ds/push_script
  
