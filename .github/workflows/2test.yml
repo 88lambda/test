@@ -35,43 +35,5 @@ jobs:
       
       - name: push_script
         run: |
-         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
-         chmod +x univention-appcenter-control
-         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         $appcenterctl new-version $credentials $app $appver
-         $appcenterctl new-version $credentials $app_ee $appver_ee
-         sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
-         sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
-         sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
-         sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
-         $appcenterctl upload $credentials --noninteractive $appver \
-           Community/LICENSE_AGREEMENT_EN \
-           Community/LICENSE_AGREEMENT_DE \
-           Community/README_APPLIANCE_EN \
-           Community/README_APPLIANCE_DE \
-           Community/README_EN \
-           Community/README_DE \
-           Community/appliance_umc_header_logo.svg \
-           Community/appliance_portal_logo.svg \
-           Community/appliance_logo.svg \
-           Community/logo_detail_page.svg \
-           Resources/logo.svg \
-           Community/onlyoffice-ds.ini \
-           Community/preinst \
-           Resources/setup \
-           Resources/inst \
-           Community/uinst \
-           Community/test
-         $appcenterctl upload $credentials --noninteractive $appver_ee \
-           Enterprise/LICENSE_AGREEMENT_EN \
-           Enterprise/LICENSE_AGREEMENT_DE \
-           Enterprise/README_EN \
-           Enterprise/README_DE \
-           Resources/logo.svg \
-           Enterprise/onlyoffice-ds-integration.ini \
-           Enterprise/preinst \
-           Resources/setup \
-           Resources/inst \
-           Enterprise/test \
-           Enterprise/uinst
+         \push_script
  
