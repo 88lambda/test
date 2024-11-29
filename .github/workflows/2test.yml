@@ -21,7 +21,7 @@ env:
   appcenterctl: ./univention-appcenter-control
   
 jobs:
-  publish_community:
+  publish_apps:
     runs-on: ubuntu-latest
     
     steps:
@@ -33,14 +33,17 @@ jobs:
         with:
           python-version: '3.x'
       
-      - name: push_ce_script
+      - name: push_script
         run: |
          curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app $appver
+         $appcenterctl new-version $credentials $app_ee $appver_ee
          sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
+         sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
          $appcenterctl upload $credentials --noninteractive $appver \
            Community/LICENSE_AGREEMENT_EN \
            Community/LICENSE_AGREEMENT_DE \
@@ -55,31 +58,10 @@ jobs:
            Resources/logo.svg \
            Community/onlyoffice-ds.ini \
            Community/preinst \
-           Community/setup \
-           Community/inst \
+           Resources/setup \
+           Resources/inst \
            Community/uinst \
            Community/test
-           
-  publish_enterprise:
-    runs-on: ubuntu-latest
-  
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Set up Python
-        uses: actions/setup-python@v5 
-        with:
-          python-version: '3.x'
-      
-      - name: push_ee_script
-        run: |
-         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
-         chmod +x univention-appcenter-control
-         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         $appcenterctl new-version $credentials $app_ee $appver_ee
-         sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
-         sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
          $appcenterctl upload $credentials --noninteractive $appver_ee \
            Enterprise/LICENSE_AGREEMENT_EN \
            Enterprise/LICENSE_AGREEMENT_DE \
@@ -88,7 +70,8 @@ jobs:
            Resources/logo.svg \
            Enterprise/onlyoffice-ds-integration.ini \
            Enterprise/preinst \
-           Enterprise/setup \
-           Enterprise/inst \
+           Resources/setup \
+           Resources/inst \
            Enterprise/test \
            Enterprise/uinst
+ 
