@@ -1,6 +1,5 @@
 	 curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
-         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app_ee $appver_ee
          sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
