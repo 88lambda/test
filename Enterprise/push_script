@@ -1,4 +1,4 @@
-		 curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+	 curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app_ee $appver_ee
