@@ -38,5 +38,3 @@ jobs:
          chmod +x onlyoffice-ds/push_script
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          \onlyoffice-ds/push_script
-         \onlyoffice-ds-integration/push_script
- 
