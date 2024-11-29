@@ -4,14 +4,14 @@
          sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
          $appcenterctl upload $credentials --noninteractive $appver_ee \
-           Enterprise/LICENSE_AGREEMENT_EN \
-           Enterprise/LICENSE_AGREEMENT_DE \
-           Enterprise/README_EN \
-           Enterprise/README_DE \
-           Resources/logo.svg \
-           Enterprise/onlyoffice-ds-integration.ini \
-           Enterprise/preinst \
-           Resources/setup \
-           Resources/inst \
-           Enterprise/test \
-           Enterprise/uinst
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
+           onlyoffice-ds-integration/README_EN \
+           onlyoffice-ds-integration/README_DE \
+           common/logo.svg \
+           onlyoffice-ds-integration/onlyoffice-ds-integration.ini \
+           onlyoffice-ds-integration/preinst \
+           common/setup \
+           common/inst \
+           onlyoffice-ds-integration/test \
+           onlyoffice-ds-integration/uinst
