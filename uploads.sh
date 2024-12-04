@@ -1,25 +1,20 @@
 #!/bin/bash
 
-DIRECTORY="onlyoffice-ds"
+DIR_CE="onlyoffice-ds"
+DIR_DE="onlyoffice-ds-integration"
 
+generate_command() {
+  local dir=$1
+  local files=("$dir"/*) 
+  local command="./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=${{ inputs.ver }} \\"
+  
+  for file in "${files[@]}"; do
+    command+="\n           $file \\"
+  done
+  
+  echo -e "${command::-2}"
+}
 
-if [[ ! -d "$DIRECTORY" ]]; then
-    echo "no such dir"
-    exit 1
-fi
+generate_command "$DIR_CE"
 
-FILES=$(find "$DIRECTORY" -type f)
-
-if [[ -z "$FILES" ]]; then
-    echo "dir is empty"
-    exit 1
-fi
-
-COMMAND="./univention-appcenter-control upload --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile --noninteractive $appver"
-for FILE in $FILES; do
-    COMMAND+=" \\$'\n           $FILE'"
-done
-
-echo -e "$COMMAND"
-
-# eval "$COMMAND"
+generate_command "$DIR_DE"
