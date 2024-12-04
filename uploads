@@ -12,7 +12,7 @@ generate_command() {
     command+="\ $file \\"
   done
   
-  ${command::-2}
+  command::-2
 }
 
 generate_command "$DIR_CE"
