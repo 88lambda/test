@@ -42,4 +42,4 @@ jobs:
          sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
          chmod +x uploads
-         \uploads
+         ./uploads
