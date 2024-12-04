@@ -12,7 +12,7 @@ generate_command() {
   local command="./univention-appcenter-control upload --username ./username --pwdfile ./pwdfile --noninteractive 5.0/onlyoffice-ds=8.2.1.1.27 \\"
   
   for file in "${files[@]}"; do
-    command+="\n           $file \\"
+    command+="$file \"
   done
   
   echo -e "${command::-2}"
