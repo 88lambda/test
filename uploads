@@ -9,7 +9,7 @@ generate_command() {
   local command="$appcenterctl upload $credentials --noninteractive $appver \\"
   
   for file in "${files[@]}"; do
-    command+="\ $file \\"
+    command+="\n$file \\"
   done
   
   echo -e "${command::-2}" > `tty`
