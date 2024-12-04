@@ -1,8 +1,5 @@
 #!/bin/bash
 
-curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
-chmod +x univention-appcenter-control
-
 DIR_CE="onlyoffice-ds"
 DIR_DE="onlyoffice-ds-integration"
 
