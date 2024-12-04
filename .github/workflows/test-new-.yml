@@ -1,0 +1,44 @@
+name: TEST NEW UPLOADS
+run-name: TEST NEW UPLOADS version ${{ inputs.ver }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "Apps Version"
+        default: "x.x.x.x"
+      docker_ver:
+        description: "Image version"
+        default: "x.x.x.x"
+env:
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
+  app: 5.0/onlyoffice-ds
+  app_ee: 5.0/onlyoffice-ds-integration
+  appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
+  appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
+  community_ini_path: onlyoffice-ds.ini
+  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
+  appcenterctl: ./univention-appcenter-control
+  
+jobs:
+  publish_community:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.x'
+      
+      - name: push_ce_script
+        run: |
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+         sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
+         sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
+         chmod +x uploads.sh
+         uploads.sh
