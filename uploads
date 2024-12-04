@@ -12,7 +12,7 @@ generate_command() {
     command+="\n$file \\"
   done
   
-  echo -e "${command::-2}" > `tty`
+  echo "${command::-2}" > `tty`
 }
 
 generate_command "$DIR_CE"
