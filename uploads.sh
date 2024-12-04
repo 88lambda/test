@@ -15,6 +15,6 @@ generate_command() {
   echo -e "${command::-2}"
 }
 
-echo %generate_command "$DIR_CE"%
+echo "generate_command "$DIR_CE""
 
 #generate_command "$DIR_DE"
