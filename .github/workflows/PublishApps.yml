@@ -16,8 +16,8 @@ env:
   app_ee: 5.0/onlyoffice-ds-integration
   appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
   appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
-  community_ini_path: Community/onlyoffice-ds.ini
-  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
+  community_ini_path: onlyoffice-ds/onlyoffice-ds.ini
+  ee_ini_path: onlyoffice-ds-integration/onlyoffice-ds-integration.ini
   appcenterctl: ./univention-appcenter-control
   
 jobs:
@@ -42,23 +42,23 @@ jobs:
          sed -i 's|appversion|${{ inputs.ver }}|' $community_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ucs:${{ inputs.docker_ver }}|' $community_ini_path
          $appcenterctl upload $credentials --noninteractive $appver \
-           Community/LICENSE_AGREEMENT_EN \
-           Community/LICENSE_AGREEMENT_DE \
-           Community/README_APPLIANCE_EN \
-           Community/README_APPLIANCE_DE \
-           Community/README_EN \
-           Community/README_DE \
-           Community/appliance_umc_header_logo.svg \
-           Community/appliance_portal_logo.svg \
-           Community/appliance_logo.svg \
-           Community/logo_detail_page.svg \
+           onlyoffice-ds/LICENSE_AGREEMENT_EN \
+           onlyoffice-ds/LICENSE_AGREEMENT_DE \
+           onlyoffice-ds/README_APPLIANCE_EN \
+           onlyoffice-ds/README_APPLIANCE_DE \
+           onlyoffice-ds/README_EN \
+           onlyoffice-ds/README_DE \
+           onlyoffice-ds/appliance_umc_header_logo.svg \
+           onlyoffice-ds/appliance_portal_logo.svg \
+           onlyoffice-ds/appliance_logo.svg \
+           onlyoffice-ds/logo_detail_page.svg \
            Resources/logo.svg \
-           Community/onlyoffice-ds.ini \
-           Community/preinst \
-           Community/setup \
-           Community/inst \
-           Community/uinst \
-           Community/test
+           onlyoffice-ds/onlyoffice-ds.ini \
+           onlyoffice-ds/preinst \
+           onlyoffice-ds/setup \
+           onlyoffice-ds/inst \
+           onlyoffice-ds/uinst \
+           onlyoffice-ds/test
            
   publish_enterprise:
     runs-on: ubuntu-latest
@@ -81,15 +81,15 @@ jobs:
          sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
          $appcenterctl upload $credentials --noninteractive $appver_ee \
-           Enterprise/LICENSE_AGREEMENT_EN \
-           Enterprise/LICENSE_AGREEMENT_DE \
-           Enterprise/README_EN \
-           Enterprise/README_DE \
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
+           onlyoffice-ds-integration/README_EN \
+           onlyoffice-ds-integration/README_DE \
            Resources/logo.svg \
-           Enterprise/onlyoffice-ds-integration.ini \
-           Enterprise/preinst \
-           Enterprise/setup \
-           Enterprise/inst \
-           Enterprise/test \
-           Enterprise/uinst
+           onlyoffice-ds-integration/onlyoffice-ds-integration.ini \
+           onlyoffice-ds-integration/preinst \
+           onlyoffice-ds-integration/setup \
+           onlyoffice-ds-integration/inst \
+           onlyoffice-ds-integration/test \
+           onlyoffice-ds-integration/uinst
            
