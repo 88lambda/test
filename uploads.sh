@@ -20,4 +20,4 @@ generate_command() {
 
 generate_command "$DIR_CE"
 
-generate_command "$DIR_DE"
+#generate_command "$DIR_DE"
