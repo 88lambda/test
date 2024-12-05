@@ -39,9 +39,9 @@ jobs:
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app $appver
          $appcenterctl upload $credentials --noninteractive $appver \
-           Community/LICENSE_AGREEMENT_EN \
-           Community/LICENSE_AGREEMENT_DE \
+           onlyoffice-ds/LICENSE_AGREEMENT_EN \
+           onlyoffice-ds/LICENSE_AGREEMENT_DE \
          $appcenterctl new-version $credentials $app_ee $appver_ee
          $appcenterctl upload $credentials --noninteractive $appver_ee \
-           Enterprise/LICENSE_AGREEMENT_EN \
-           Enterprise/LICENSE_AGREEMENT_DE \
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
+           onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
