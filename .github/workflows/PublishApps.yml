@@ -35,5 +35,5 @@ jobs:
          chmod +x publish
          export APP_VER=${{ inputs.ver }}
          export IMAGE_VER=${{ inputs.docker_ver }}
-         publish
+         ./publish
            
