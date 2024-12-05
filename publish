@@ -8,8 +8,7 @@ process_ini_files() {
   local ini_files=(*.ini)
 
   for ini_file in "${ini_files[@]}"; do
-    sed -i 's|appversion|$app_ver|' $ini_file
-    sed -i 's|imageversion|$image_ver|' $ini_file
+
     local dir_name="${ini_file%.ini}"
     generate_command "$dir_name" "$ini_file"
   done
