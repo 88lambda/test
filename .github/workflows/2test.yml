@@ -16,8 +16,8 @@ env:
   app_ee: 5.0/onlyoffice-ds-integration
   appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
   appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
-  community_ini_path: onlyoffice-ds/onlyoffice-ds.ini
-  ee_ini_path: onlyoffice-ds-integration/onlyoffice-ds-integration.ini
+  community_ini_path: Community/onlyoffice-ds.ini
+  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
   appcenterctl: ./univention-appcenter-control
   
 jobs:
@@ -37,4 +37,11 @@ jobs:
         run: |
          chmod +x onlyoffice-ds/push_script
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-         \onlyoffice-ds/push_script
+         $appcenterctl new-version $credentials $app $appver
+         $appcenterctl upload $credentials --noninteractive $appver \
+           Community/LICENSE_AGREEMENT_EN \
+           Community/LICENSE_AGREEMENT_DE \
+         $appcenterctl new-version $credentials $app_ee $appver_ee
+         $appcenterctl upload $credentials --noninteractive $appver_ee \
+           Enterprise/LICENSE_AGREEMENT_EN \
+           Enterprise/LICENSE_AGREEMENT_DE \
