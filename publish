@@ -18,8 +18,8 @@ generate_command() {
   local dir=$1
   local ini_file=$2
   local files=("$dir"/*)
-  local command_new_ver="$appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name:$app_ver"
-  local command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name:$app_ver \\"
+  local command_new_ver="$appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name=$app_ver"
+  local command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name=$app_ver \\"
 
   for file in "${files[@]}"; do
     command+="$file \\"
