@@ -23,10 +23,10 @@ generate_command() {
   local command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name=$app_ver "
 
   for file in "${files[@]}"; do
-    command+="$file \\"
+    command+="$file "
   done
 
-  command+="$ini_file \\"
+  command+="$ini_file "
 
   $command_new_ver
   ${command::-2}
