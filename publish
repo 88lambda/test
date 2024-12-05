@@ -28,8 +28,8 @@ generate_command() {
 
   command+="$ini_file "
 
-  $command_new_ver
-  $command
+  echo -e $command_new_ver
+  echo -e $command
 }
 
 process_ini_files
