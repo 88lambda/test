@@ -21,6 +21,7 @@ generate_command() {
   local files=("$dir"/*)
   local command_new_ver="$appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name=$app_ver"
   local command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name=$app_ver "
+  echo -e "$command_new_ver"
 
   for file in "${files[@]}"; do
     command+="$file "
@@ -28,7 +29,6 @@ generate_command() {
 
   command+="$ini_file "
 
-  echo -e "$command_new_ver"
   echo -e "$command"
 }
 
