@@ -30,7 +30,9 @@ generate_command() {
 
   command+="$ini_file \\"
 
-  ${command::-2}
+  command=$($command | sed '$ s/\\$//')
+
+  $command
 }
 
 process_ini_files
