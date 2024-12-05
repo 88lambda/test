@@ -35,7 +35,8 @@ jobs:
       
       - name: push_script
         run: |
-         chmod +x onlyoffice-ds/push_script
+         curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control
+         chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app $appver
          $appcenterctl upload $credentials --noninteractive $appver \
