@@ -29,7 +29,7 @@ generate_command() {
   command+="$ini_file "
 
   $command_new_ver
-  ${command::-2}
+  $command
 }
 
 process_ini_files
