@@ -39,10 +39,10 @@ jobs:
          chmod +x univention-appcenter-control
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          $appcenterctl new-version $credentials $app $appver
+         $appcenterctl new-version $credentials $app_ee $appver_ee
          $appcenterctl upload $credentials --noninteractive $appver \
            onlyoffice-ds/LICENSE_AGREEMENT_EN \
            onlyoffice-ds/LICENSE_AGREEMENT_DE \
-         $appcenterctl new-version $credentials $app_ee $appver_ee
          $appcenterctl upload $credentials --noninteractive $appver_ee \
            onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
            onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
