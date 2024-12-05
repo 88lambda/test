@@ -6,13 +6,12 @@ image_ver="$IMAGE_VER"
 
 process_ini_files() {
   local ini_files=(*.ini)
-  local command_new_ver="$appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name=$app_ver"
 
   for ini_file in "${ini_files[@]}"; do
     sed -i 's|appversion|$app_ver|' $ini_file
     sed -i 's|imageversion|$image_ver|' $ini_file
     local dir_name="${ini_file%.ini}"
-    $command_new_ver
+    $appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name=$app_ver
     generate_command "$dir_name" "$ini_file"
   done
 }
