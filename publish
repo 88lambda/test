@@ -22,16 +22,15 @@ generate_command() {
 
   $appcenterctl new-version $credentials $ucsver/$dir_name $ucsver/$dir_name:$app_ver
 
-  command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name:$app_ver \"
+  command="$appcenterctl upload $credentials --noninteractive $ucsver/$dir_name:$app_ver \\"
 
   for file in "${files[@]}"; do
-    command+="$file \"
+    command+="$file \\"
   done
 
-  command+="$ini_file"
+  command+="$ini_file \\"
 
-  $command
-
+  echo -e ${command::-2}
 }
 
 process_ini_files
