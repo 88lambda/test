@@ -24,4 +24,4 @@ sed -i 's|imageversion|$version|' "$app_ini"
 file_list=$(ls | tr '\n' ',') 
 
 
-python3 "$PY_SCRIPT_PATH" "$ucsver/$app_name" "$ucsver/$app_name=$version" "$file_list"
+python3 "$PY_SCRIPT_PATH" ""$ucsver""/""$app_name"" ""$ucsver""/""$app_name""=""$version"" "$file_list"
