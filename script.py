@@ -15,7 +15,7 @@ def run_command(command):
 
 def create_new_version(app_name, version):
     print(f"Creating new version of {app_name}")
-    command = ["./univention-appcenter-control", "new-ver", app_name, version]
+    command = ["./univention-appcenter-control", "new-version", app_name, version]
     run_command(command)
 
 def upload_files(app_name, files):
