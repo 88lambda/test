@@ -1,0 +1,47 @@
+name: publish-new
+run-name: publish-new version ${{ inputs.ver }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "Apps Version"
+        default: "x.x.x.x"
+      docker_ver:
+        description: "Image version"
+        default: "x.x.x.x"
+env:
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
+  app: 5.0/onlyoffice-ds
+  app_ee: 5.0/onlyoffice-ds-integration
+  appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
+  appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
+  community_ini_path: onlyoffice-ds.ini
+  ee_ini_path: onlyoffice-ds-integration/onlyoffice-ds-integration.ini
+  appcenterctl: ./univention-appcenter-control
+  
+jobs:
+  publish_community:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.x'
+      
+      - name: push_script
+        run: |
+         export APP_VER=${{ inputs.ver }}
+         chmod +x script.sh
+         for app_dir in ./apps/*; do
+           if [ -d "$app_dir" ]; then
+             echo "Pushing $app_dir"
+             cd "$app_dir"
+             ../../script.sh
+             cd -
+           fi
+          done
