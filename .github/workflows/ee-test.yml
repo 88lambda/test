@@ -14,7 +14,7 @@ env:
   login: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
   app_ee: 5.0/onlyoffice-ds-integration
   appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
-  ee_ini_path: Enterprise/onlyoffice-ds-integration.ini
+  ee_ini_path: apps/onlyoffice-ds-integration/onlyoffice-ds-integration.ini
   command: ./univention-appcenter-control
   
 jobs:
@@ -39,14 +39,14 @@ jobs:
          sed -i 's|appversion|${{ inputs.ver }}|' $ee_ini_path
          sed -i 's|imageversion|onlyoffice/documentserver-ee-ucs:${{ inputs.docker_ver }}|' $ee_ini_path
          $command upload $login --noninteractive $appver_ee \
-           onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
-           onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
-           onlyoffice-ds-integration/README_EN \
-           onlyoffice-ds-integration/README_DE \
-           onlyoffice-ds-integration/logo.svg \
-           onlyoffice-ds-integration/onlyoffice-ds-integration.ini \
-           onlyoffice-ds-integration/preinst \
-           onlyoffice-ds-integration/setup \
-           onlyoffice-ds-integration/inst \
-           onlyoffice-ds-integration/test \
-           onlyoffice-ds-integration/uinst
+           apps/onlyoffice-ds-integration/LICENSE_AGREEMENT_EN \
+           apps/onlyoffice-ds-integration/LICENSE_AGREEMENT_DE \
+           apps/onlyoffice-ds-integration/README_EN \
+           apps/onlyoffice-ds-integration/README_DE \
+           apps/onlyoffice-ds-integration/logo.svg \
+           apps/onlyoffice-ds-integration/onlyoffice-ds-integration.ini \
+           apps/onlyoffice-ds-integration/preinst \
+           apps/onlyoffice-ds-integration/setup \
+           apps/onlyoffice-ds-integration/inst \
+           apps/onlyoffice-ds-integration/test \
+           apps/onlyoffice-ds-integration/uinst
