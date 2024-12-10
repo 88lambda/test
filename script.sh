@@ -2,6 +2,7 @@
 
 ucsver="5.0"
 app_ver="$APP_VER"
+PY_SCRIPT_PATH="$(dirname "$(realpath "$0")")/../publish_script.py"
 
 if [ ! -f "publish_script.py" ]; then
     curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control 
@@ -23,4 +24,4 @@ sed -i 's|imageversion|$version|' "$app_ini"
 file_list=$(ls | tr '\n' ',') 
 
 
-python3 ./script.py "$ucsver/$app_name" "$ucsver/$app_name=$version" "$file_list"
+python3 "$PY_SCRIPT_PATH" "$ucsver/$app_name" "$ucsver/$app_name=$version" "$file_list"
