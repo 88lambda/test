@@ -4,7 +4,14 @@ import sys
 import subprocess
 import os
 
-
+def run_command(command):
+    try:
+        result = subprocess.run(command, text=True, check=True, capture_output=True)
+        print(result.stdout.strip())
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing {' '.join(command)}", file=sys.stderr)
+        print(e.stderr.strip(), file=sys.stderr)
+        sys.exit(e.returncode)
 
 def create_new_version(app_name, version):
     print(f"Creating new version of {app_name}")
