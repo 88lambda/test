@@ -2,7 +2,7 @@
 
 ucsver="5.0"
 app_ver="$APP_VER"
-PY_SCRIPT_PATH="$(dirname "$(realpath "$0")")/../publish_script.py"
+PY_SCRIPT_PATH="$(dirname "$(realpath "$0")")/../script.py"
 
 if [ ! -f "publish_script.py" ]; then
     curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control 
