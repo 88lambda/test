@@ -21,7 +21,7 @@ version=$app_ver
 sed -i 's|appversion|$version|' "$app_ini"
 sed -i 's|imageversion|$version|' "$app_ini"
 
-printf -v new_ver_command '$appcenterctl new-version $credentials %s %s' "$ucsver/$app_name" "$ucsver/$app_name=$version"
+printf -v new_ver_command '$appcenterctl new-version $credentials %s "%s"' "$ucsver/$app_name" "$ucsver/$app_name=$version"
 eval $new_ver_command
 
 file_list=$(ls)
