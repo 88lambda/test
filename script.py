@@ -19,7 +19,6 @@ def create_new_version(app_name, version):
     run_command(command)
 
 def upload_files(app_name, files):
-    """Загрузка файлов для приложения."""
     for file in files:
         if os.path.isfile(file):  
             print(f"Uploading {file}")
