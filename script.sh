@@ -29,6 +29,6 @@ echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_na
 
 file_list=$(ls)
 common_dir="$(dirname "$(realpath "$0")")/common"
-common_files=$(find "$common_dir" -type f | tr '\n' ',')
+common_files=$(find "$common_dir" -type f | tr '\n')
 
 $appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list $common_files
