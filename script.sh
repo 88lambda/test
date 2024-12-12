@@ -25,8 +25,6 @@ $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$vers
 
 file_list=$(ls)
 
-for file in $file_list; do
-    if [ -f "$file" ]; then
-        $appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file
-    fi
+$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version ""\"$file_list "
+
 done
