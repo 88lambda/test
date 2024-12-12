@@ -18,7 +18,7 @@ env:
   appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
   community_ini_path: onlyoffice-ds.ini
   ee_ini_path: onlyoffice-ds-integration/onlyoffice-ds-integration.ini
-  appcenterctl: ./univention-appcenter-control
+  appcenterctl: .././univention-appcenter-control
   
 jobs:
   publish_community:
