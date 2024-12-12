@@ -11,13 +11,7 @@ on:
         description: "Image version"
         default: "x.x.x.x"
 env:
-  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile
-  app: 5.0/onlyoffice-ds
-  app_ee: 5.0/onlyoffice-ds-integration
-  appver: 5.0/onlyoffice-ds=${{ inputs.ver }}
-  appver_ee: 5.0/onlyoffice-ds-integration=${{ inputs.ver }}
-  community_ini_path: onlyoffice-ds.ini
-  ee_ini_path: onlyoffice-ds-integration/onlyoffice-ds-integration.ini
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile .././pwdfile
   appcenterctl: .././univention-appcenter-control
   
 jobs:
