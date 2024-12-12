@@ -28,6 +28,6 @@ echo -e sed -i "s|imageversion|$version|" "$app_ini"
 echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
 
 file_list=$(ls)
-common_files=$(ls "../../common")
+common_files=$(ls "../common")
 
 $appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list $common_files
