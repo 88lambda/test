@@ -22,10 +22,10 @@ fi
 
 version=$app_ver
 
-echo -e sed -i "s|appversion|$version|" "$app_ini"
-echo -e sed -i "s|imageversion|$version|" "$app_ini"
+sed -i "s|appversion|$version|" "$app_ini"
+sed -i "s|imageversion|$version|" "$app_ini"
 
-echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
+$appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
 
 file_list=$(ls)
 common_files=$(find "../../common" -type f -exec realpath {} \;)
