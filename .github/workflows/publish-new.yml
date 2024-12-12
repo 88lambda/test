@@ -13,7 +13,7 @@ env:
   appcenterctl: .././univention-appcenter-control
   
 jobs:
-  publish_community:
+  publish_apps:
     runs-on: ubuntu-latest
     
     steps:
@@ -25,16 +25,16 @@ jobs:
         with:
           python-version: '3.x'
       
-      - name: push_script
+      - name: publish_script
         run: |
          export APP_VER=${{ inputs.ver }}
          export PASS=${{ secrets.PORTAL_PWD }}
-         chmod +x script.sh
+         chmod +x deploy.sh
          for app_dir in ./apps/*; do
            if [ -d "$app_dir" ]; then
-             echo "Pushing $app_dir"
+             echo "Publishing $app_dir"
              cd "$app_dir"
-             ../../script.sh
+             ../../deploy.sh
              cd -
            fi
           done
