@@ -2,10 +2,14 @@
 
 ucsver="5.0"
 app_ver="$APP_VER"
+pwd="$PWD"
 
 if [ ! -f "univention-appcenter-control" ]; then
     cd .. && { curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control ; chmod +x univention-appcenter-control ; cd -; }
-    chmod +x univention-appcenter-control
+fi
+
+if [ ! -f "pwdfile" ]; then
+    cd .. && { echo "$pwd" > pwdfile ; cd -; }
 fi
 
 app_ini=$(find . -maxdepth 1 -name "*.ini" | head -n 1)
