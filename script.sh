@@ -22,13 +22,15 @@ fi
 
 version=$app_ver
 
-echo -e sed -i 's|appversion|$version|' "$app_ini"
-echo -e sed -i 's|imageversion|$version|' "$app_ini"
+echo -e sed -i "s|appversion|$version|" "$app_ini"
+echo -e sed -i "s|imageversion|$version|" "$app_ini"
 
 echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
 
 file_list=$(ls)
-common_dir="$(dirname "$(realpath "$0")")/common"
-common_files=$(find "$common_dir" -type f | tr '\n')
 
-$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list $common_files
+common_dir="../common"
+common_files=$(ls "$common_dir")
+file_list="$file_list $common_files"
+
+$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list
