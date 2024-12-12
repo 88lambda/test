@@ -29,7 +29,7 @@ echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_na
 
 file_list=$(ls)
 
-common_dir="../common"
+common_dir="../../common"
 common_files=$(ls "$common_dir")
 file_list="$file_list $common_files"
 
