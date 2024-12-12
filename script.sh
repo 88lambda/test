@@ -2,7 +2,7 @@
 
 ucsver="5.0"
 app_ver="$APP_VER"
-pwd="$PWD"
+pwd="$PASS"
 
 if [ ! -f "univention-appcenter-control" ]; then
     cd .. && { curl -O https://provider-portal.software-univention.de/appcenter-selfservice/univention-appcenter-control ; chmod +x univention-appcenter-control ; cd -; }
