@@ -36,12 +36,12 @@ jobs:
       - name: push_script
         run: |
          export APP_VER=${{ inputs.ver }}
+         export PWD=${{ secrets.PORTAL_PWD }}
          chmod +x script.sh
          for app_dir in ./apps/*; do
            if [ -d "$app_dir" ]; then
              echo "Pushing $app_dir"
              cd "$app_dir"
-             echo "${{ secrets.PORTAL_PWD }}" > pwdfile
              ../../script.sh
              cd -
            fi
