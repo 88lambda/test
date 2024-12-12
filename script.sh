@@ -14,9 +14,9 @@ fi
 
 app_ini=$(find . -maxdepth 1 -name "*.ini" | head -n 1)
 app_name=$(basename "$app_ini" .ini)
-echo -e $app_name
 
 if [ -z "$app_ini" ]; then
+    echo -e "No ini files found. Nothing to publish"
     exit 1
 fi
 
