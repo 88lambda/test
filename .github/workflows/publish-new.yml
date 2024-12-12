@@ -7,9 +7,7 @@ on:
       ver:
         description: "Apps Version"
         default: "x.x.x.x"
-      docker_ver:
-        description: "Image version"
-        default: "x.x.x.x"
+
 env:
   credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile .././pwdfile
   appcenterctl: .././univention-appcenter-control
