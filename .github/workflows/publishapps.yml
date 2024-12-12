@@ -1,5 +1,5 @@
-name: publish-new
-run-name: publish-new version ${{ inputs.ver }}
+name: Publish apps
+run-name: Publish apps version ${{ inputs.ver }}
 
 on:
   workflow_dispatch:
