@@ -25,4 +25,4 @@ echo -e $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_na
 
 file_list=$(ls)
 
-$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version \ $file_list 
+$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list
