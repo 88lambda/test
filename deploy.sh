@@ -9,10 +9,6 @@ if [ ! -f $appcenterctl ]; then
     chmod +x $appcenterctl
 fi
 
-if [ ! -f "../pwdfile" ]; then
-    cd .. && { echo "$pwd" > pwdfile ; cd -; }
-fi
-
 app_ini=$(find . -maxdepth 1 -name "*.ini" | head -n 1)
 app_name=$(basename "$app_ini" .ini)
 
