@@ -20,10 +20,8 @@ if [ -z "$app_ini" ]; then
     exit 1
 fi
 
-version=$app_ver
-
-sed -i "s|appversion|$version|" "$app_ini"
-sed -i "s|imageversion|$version|" "$app_ini"
+sed -i "s|appversion|$app_ver|" "$app_ini"
+sed -i "s|imageversion|$app_ver|" "$app_ini"
 
 $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
 
