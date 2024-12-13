@@ -9,9 +9,7 @@ on:
         default: "x.x.x.x"
 
 env:
-  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile .././pwdfile
-  appcenterctl: .././univention-appcenter-control
-  
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ./pwdfile  
 jobs:
   publish_apps:
     runs-on: ubuntu-latest
@@ -28,8 +26,8 @@ jobs:
       - name: publish_script
         run: |
          export APP_VER=${{ inputs.ver }}
-         export PASS=${{ secrets.PORTAL_PWD }}
          chmod +x deploy.sh
+         echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          for app_dir in ./apps/*; do
            if [ -d "$app_dir" ]; then
              echo "Publishing $app_dir"
