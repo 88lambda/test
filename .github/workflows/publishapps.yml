@@ -9,7 +9,7 @@ on:
         default: "x.x.x.x"
 
 env:
-  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile .././pwdfile  
+  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ../.././pwdfile  
 jobs:
   publish_apps:
     runs-on: ubuntu-latest
