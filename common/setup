@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-#TESTTESTTESTTEST
 
 chown -R ds:ds /var/lib/onlyoffice/documentserver/App_Data/cache/files
 JSON=/var/www/onlyoffice/documentserver/npm/json
