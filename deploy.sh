@@ -26,4 +26,4 @@ file_list=$(ls)
 #common_files=$(find "../../common" -type f -exec realpath {} \;)
 #common_files=$(ln -s "../../common" "/$app_name")
 
-$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$app_ver $file_list
+$appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$app_ver $file_list 
