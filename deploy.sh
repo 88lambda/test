@@ -26,3 +26,4 @@ file_list=$(ls)
 common_files=$(find "../../common" -type f -exec realpath {} \;)
 
 $appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list $common_files
+
