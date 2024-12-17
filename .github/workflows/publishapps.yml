@@ -26,7 +26,6 @@ jobs:
       - name: publish_script
         run: |
          export APP_VER=${{ inputs.ver }}
-         chmod +x deploy.sh
          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
          for app_dir in ./apps/*; do
            if [ -d "$app_dir" ]; then
@@ -36,3 +35,4 @@ jobs:
              cd -
            fi
           done
+
