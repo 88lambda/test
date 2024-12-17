@@ -23,7 +23,7 @@ sed -i "s|imageversion|$app_ver|" "$app_ini"
 $appcenterctl new-version $credentials $ucsver/$app_name $ucsver/$app_name=$version
 
 file_list=$(ls)
-common_files=$(find "../../common" -type f -exec realpath {} \;)
+#common_files=$(find "../../common" -type f -exec realpath {} \;)
+common_files=$(ln -s "../../common" "/$app_name")
 
 $appcenterctl upload $credentials --noninteractive $ucsver/$app_name=$version $file_list $common_files
-
