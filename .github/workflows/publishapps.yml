@@ -8,8 +8,9 @@ on:
         description: "Apps Version"
         default: "x.x.x.x"
 
-env:
-  credentials: --username ${{ secrets.PORTAL_USER }} --pwdfile ../.././pwdfile  
+env:  
+  username: ${{ secrets.PORTAL_USER }}
+  passfile: ../.././pwdfile
 jobs:
   publish_apps:
     runs-on: ubuntu-latest
