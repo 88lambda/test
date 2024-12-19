@@ -27,6 +27,7 @@ jobs:
           fi
           echo "Detected applications: $apps"
           echo "apps=$apps" >> $GITHUB_OUTPUT
+          echo "DEBUG: ${{ needs.check-apps.outputs.apps }}"
  
   publish-applications:
     needs: check-apps
