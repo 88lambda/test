@@ -28,7 +28,9 @@ jobs:
           echo "Detected applications: $apps"
           apps=$(echo "$apps" | tr -d '\n')
           echo "apps=$apps" >> $GITHUB_OUTPUT
-        shell: bash
+      - name: Debug Applications
+        run: |
+          echo "List of applications: ${{ needs.list-apps.outputs.apps }}"
  
   publish-applications:
     needs: check-apps
