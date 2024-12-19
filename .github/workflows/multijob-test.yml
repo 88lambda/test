@@ -28,6 +28,10 @@ jobs:
           echo "Detected applications: $apps"
           echo "::set-output name=apps::$apps"
 
+      - name: Debug Outputs
+        run: |
+          echo "Matrix apps: ${{ needs.list-apps.outputs.apps }}"
+ 
   publish-applications:
     needs: check-apps
     runs-on: ubuntu-latest
