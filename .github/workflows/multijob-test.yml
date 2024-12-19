@@ -20,7 +20,7 @@ jobs:
       - name: Check Apps
         id: set-matrix
         run: |
-          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; ' ')
+          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | head -n 1)
           if [ -z "$apps" ]; then
             echo "No applications found in the apps directory!"
             exit 1
