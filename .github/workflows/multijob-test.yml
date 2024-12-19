@@ -1,4 +1,4 @@
-name: Publish apps
+name: Publish apps -multijob
 
 on:
   workflow_dispatch:
