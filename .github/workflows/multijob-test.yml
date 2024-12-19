@@ -26,8 +26,7 @@ jobs:
             exit 1
           fi
           echo "Detected applications: $apps"
-          echo "apps=$apps '($s|split(" "))'" >> $GITHUB_OUTPUT
-          echo "DEBUG: ${{ needs.check-apps.outputs.apps }}"
+          echo -e "apps=$apps\n" >> $GITHUB_OUTPUT
  
   publish-applications:
     needs: check-apps
