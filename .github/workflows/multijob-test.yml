@@ -20,13 +20,13 @@ jobs:
       - name: Check Apps
         id: set-matrix
         run: |
-          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | head -n 1)
+          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ' ')
           if [ -z "$apps" ]; then
             echo "No applications found in the apps directory!"
             exit 1
           fi
           echo "Detected applications: $apps"
-          echo "$apps" > $GITHUB_OUTPUT
+          echo "apps=$apps '($s|split(" "))'" >> $GITHUB_OUTPUT
           echo "DEBUG: ${{ needs.check-apps.outputs.apps }}"
  
   publish-applications:
