@@ -30,7 +30,7 @@ jobs:
 
       - name: Debug Outputs
         run: |
-          echo "Matrix apps: ${{ needs.list-apps.outputs.apps }}"
+          echo "Matrix apps: ${{ needs.ckeck-apps.outputs.apps }}"
  
   publish-applications:
     needs: check-apps
