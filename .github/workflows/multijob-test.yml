@@ -26,7 +26,7 @@ jobs:
             exit 1
           fi
           echo "Detected applications: $apps"
-          apps=$(echo "$apps" | tr -d ' \n')
+          apps=$(echo "$apps" | tr -d '\n')
           echo "apps=$apps" >> $GITHUB_OUTPUT
         shell: bash
  
