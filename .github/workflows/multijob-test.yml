@@ -26,7 +26,6 @@ jobs:
             exit 1
           fi
           echo "Detected applications: $apps"
-          echo "apps=$apps" >> $GITHUB_OUTPUT
           echo "apps=$(jq -n -c --arg s "$apps")" >> $GITHUB_OUTPUT
       - name: Debug Applications
         run: |
