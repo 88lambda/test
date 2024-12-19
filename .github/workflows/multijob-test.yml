@@ -25,7 +25,7 @@ jobs:
             echo "No applications found in the apps directory!"
             exit 1
           fi
-          echo "Detected applications: $apps\n"
+          echo -e "Detected applications: $apps\n"
           echo -e "apps=$apps\n" >> $GITHUB_OUTPUT
  
   publish-applications:
