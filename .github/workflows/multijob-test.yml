@@ -50,8 +50,7 @@ jobs:
 
       - name: Publish App
         run: |
-          chmod +x script.sh
           cd ./apps/${{ matrix.app_dir }}
-          ../../script.sh
+          ../../deploy.sh
           cd -
           
