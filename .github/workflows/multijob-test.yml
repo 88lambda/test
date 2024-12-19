@@ -1,1 +1,57 @@
+name: Publish apps
 
+on:
+  workflow_dispatch:
+    inputs:
+      ver:
+        description: "Apps Version"
+        required: true
+        default: "x.x.x.x"
+
+jobs:
+  check-apps:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.set-matrix.outputs.apps }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Check Apps
+        id: set-matrix
+        run: |
+          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | jq -R . | jq -s .)
+          echo "Detected applications: $apps"
+          echo "::set-output name=apps::$apps"
+
+  publish-applications:
+    needs: check-apps
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app_dir: ${{ fromJson(needs.ckeck-apps.outputs.apps) }}
+    env:
+      username: ${{ secrets.PORTAL_USER }}
+      passfile: ../.././pwdfile
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Prepare Environment
+        run: |
+          export APP_VER=${{ inputs.ver }}
+          echo "${{ secrets.PORTAL_PWD }}" > pwdfile
+          echo "Environment prepared for ${{ matrix.app_dir }}"
+
+      - name: Publish App
+        run: |
+          chmod +x script.sh
+          cd ./apps/${{ matrix.app_dir }}
+          ../../script.sh
+          cd -
+          
