@@ -20,13 +20,14 @@ jobs:
       - name: Check Apps
         id: set-matrix
         run: |
-          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ' ')
+          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | jq -R . | jq -s .)
           if [ -z "$apps" ]; then
             echo "No applications found in the apps directory!"
             exit 1
           fi
           echo "Detected applications: $apps"
-          echo "apps=$(jq -n -c --arg s "${apps}" '($s|split(" "))')" >> $GITHUB_OUTPUT
+          apps=$(echo "$apps" | tr -d ' \n')
+          echo "apps=$apps" >> $GITHUB_OUTPUT
       - name: Debug Applications
         run: |
           echo "List of applications: ${{ fromJson(needs.list-apps.outputs.apps) }}"
