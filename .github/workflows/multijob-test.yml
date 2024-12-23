@@ -29,7 +29,7 @@ jobs:
           echo "apps=$(jq -n -c --arg s "${apps}" '($s|split(" "))')" >> $GITHUB_OUTPUT
       - name: Debug Applications
         run: |
-          echo "List of applications: ${{ needs.list-apps.outputs.apps }}"
+          echo "List of applications: ${{ fromJson(needs.list-apps.outputs.apps) }}"
  
   publish-applications:
     needs: check-apps
