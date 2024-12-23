@@ -20,19 +20,21 @@ jobs:
       - name: Check Apps
         id: set-matrix
         run: |
-          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ',' | sed 's/,$//')
+          apps=$(find apps -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
           if [ -z "$apps" ]; then
             echo "No applications found in the 'apps' directory!"
             exit 1
           fi
-          echo "apps=[$apps]" >> $GITHUB_OUTPUT
+          apps_json=$(printf '%s\n' $apps | jq -R . | jq -s .)
+          echo "Detected applications: $apps_json"
+          echo "apps=$apps_json" >> $GITHUB_OUTPUT
  
   publish-applications:
     needs: check-apps
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app_dir: ${{ fromJson('["' + needs.list-apps.outputs.apps + '"]') }}
+        app_dir: ${{ fromJson(needs.list-apps.outputs.apps) }}
     env:
       username: ${{ secrets.PORTAL_USER }}
       passfile: ../.././pwdfile
