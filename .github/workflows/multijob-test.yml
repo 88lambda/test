@@ -37,8 +37,8 @@ jobs:
       matrix:
         app_dir: ${{ fromJson(needs.check-apps.outputs.apps) }}
     env:
-      username: ${{ secrets.PORTAL_USER }}
-      passfile: ../.././pwdfile
+      username: --username ${{ secrets.PORTAL_USER }}
+      passfile: --pwdfile ../.././pwdfile
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
