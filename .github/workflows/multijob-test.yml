@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app_dir: ${{ fromJson(needs.list-apps.outputs.apps) }}
+        app_dir: ${{ fromJson(needs.check-apps.outputs.apps) }}
     env:
       username: ${{ secrets.PORTAL_USER }}
       passfile: ../.././pwdfile
