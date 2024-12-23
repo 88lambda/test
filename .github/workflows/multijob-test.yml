@@ -50,12 +50,12 @@ jobs:
 
       - name: Prepare Environment
         run: |
-          export APP_VER=${{ inputs.ver }}
           echo "${{ secrets.PORTAL_PWD }}" > pwdfile
           echo "Environment prepared for ${{ matrix.app_dir }}"
 
       - name: Publish App
         run: |
+          export APP_VER=${{ inputs.ver }}
           cd ./apps/${{ matrix.app_dir }}
           ../../deploy.sh
           cd -
