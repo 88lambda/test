@@ -1,8 +1,5 @@
 name: Publish apps -multijob
-run-name: >-
-  Version #${{ inputs.ver }} [
-  $apps_json
-  ]
+run-name: Version ${{ inputs.ver }}
 
 on:
   workflow_dispatch:
