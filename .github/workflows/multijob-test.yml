@@ -1,4 +1,8 @@
 name: Publish apps -multijob
+run-name: >-
+  Version #${{ inputs.ver }} [
+  ${{ fromJson(needs.check-apps.outputs.apps) }}
+  ]
 
 on:
   workflow_dispatch:
