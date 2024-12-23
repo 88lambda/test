@@ -1,7 +1,7 @@
 name: Publish apps -multijob
 run-name: >-
   Version #${{ inputs.ver }} [
-  ${{ fromJson(needs.check-apps.outputs.apps) }}
+  $apps_json
   ]
 
 on:
