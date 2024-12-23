@@ -28,6 +28,7 @@ jobs:
           apps_json=$(printf '%s\n' $apps | jq -R . | jq -s . | tr -d '[:space:]')
           echo "Detected applications: $apps_json"
           echo "apps=$apps_json" >> $GITHUB_OUTPUT
+          echo $apps_json
  
   publish-applications:
     needs: check-apps
