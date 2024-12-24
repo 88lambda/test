@@ -17,10 +17,10 @@ if [ -z "$app_ini" ]; then
     exit 1
 fi
 
-echo -e sed -i "s|appversion|$app_ver|" "$app_ini"
+sed -i "s|appversion|$app_ver|" "$app_ini"
 sed -i "s|imageversion|$app_ver|" "$app_ini"
 
-echo -e $appcenterctl new-version --username $username --password $password $ucsver/$app_name $ucsver/$app_name=$app_ver
+$appcenterctl new-version --username $username --password $password $ucsver/$app_name $ucsver/$app_name=$app_ver
 
 file_list=$(ls)
 
