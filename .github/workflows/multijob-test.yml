@@ -47,8 +47,8 @@ jobs:
 
       - name: Publish App
         env:
-          username: --username ${{ secrets.PORTAL_USER }}
-          passfile: --pwdfile ../.././pwdfile
+          username: ${{ secrets.PORTAL_USER }}
+          passfile: ../.././pwdfile
         run: |
           echo "${{ secrets.PORTAL_PWD }}" > pwdfile
           export APP_VER=${{ inputs.ver }}
