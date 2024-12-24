@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ucsver="5.0"
-app_ver="$APP_VER"
+app_ver="$version"
 appcenterctl=~/univention-appcenter-control
 
 if [ ! -f $appcenterctl ]; then
