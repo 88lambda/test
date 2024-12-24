@@ -1,10 +1,10 @@
 name: Publish apps -multijob
-run-name: Version ${{ inputs.ver }}
+run-name: Version ${{ inputs.VER }}
 
 on:
   workflow_dispatch:
     inputs:
-      ver:
+      VER:
         description: "Apps Version"
         required: true
         default: "x.x.x.x"
@@ -51,7 +51,7 @@ jobs:
           passfile: ../.././pwdfile
         run: |
           echo "${{ secrets.PORTAL_PWD }}" > pwdfile
-          export APP_VER=${{ inputs.ver }}
+          export APP_VER=${{ inputs.VER }}
           cd ./apps/${{ matrix.app_dir }}
           ../../deploy.sh
           cd -
