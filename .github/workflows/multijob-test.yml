@@ -49,7 +49,7 @@ jobs:
         env:
           username: ${{ secrets.PORTAL_USER }}
           passfile: ../.././pwdfile
-          app_ver: ${{ inputs.VER }}
+          version: ${{ inputs.VER }}
         run: |
           echo "${{ secrets.PORTAL_PWD }}" > pwdfile
           cd ./apps/${{ matrix.app_dir }}
