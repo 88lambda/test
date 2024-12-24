@@ -20,8 +20,8 @@ fi
 echo -e sed -i "s|appversion|$app_ver|" "$app_ini"
 sed -i "s|imageversion|$app_ver|" "$app_ini"
 
-echo -e $appcenterctl new-version --username $username --pwdfile $passfile $ucsver/$app_name $ucsver/$app_name=$app_ver
+echo -e $appcenterctl new-version --username $username --password $password $ucsver/$app_name $ucsver/$app_name=$app_ver
 
 file_list=$(ls)
 
-$appcenterctl upload --username $username --pwdfile $passfile --noninteractive $ucsver/$app_name=$app_ver $file_list 
+$appcenterctl upload --username $username --password $password --noninteractive $ucsver/$app_name=$app_ver $file_list 
