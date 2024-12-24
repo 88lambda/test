@@ -48,7 +48,7 @@ jobs:
       - name: Publish App
         env:
           username: ${{ secrets.PORTAL_USER }}
-          passfile: ${{ secrets.PORTAL_PWD }}
+          password: ${{ secrets.PORTAL_PWD }}
           version: ${{ inputs.VER }}
         run: |
           cd ./apps/${{ matrix.app_dir }}
