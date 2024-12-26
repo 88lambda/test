@@ -52,6 +52,7 @@ jobs:
           version: ${{ inputs.VER }}
         run: |
           echo "${{ secrets.PORTAL_PWD }}" > ~$passfile
+          echo -e ls
           cd ./apps/${{ matrix.app_dir }}
           ../../deploy.sh
           cd -
