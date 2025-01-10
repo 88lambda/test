@@ -1,0 +1,16 @@
+name: Triggered by another repo
+
+on:
+  workflow_run:
+    workflows: ["Create Tag Workflow"]
+    types:
+      - completed
+
+jobs:
+  triggered-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Run Task
+        run: echo "Triggered by workflow from another repository."
