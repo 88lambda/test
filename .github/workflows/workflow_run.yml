@@ -1,8 +1,9 @@
-name: Triggered by another repo
+name: Triggered by Repo1
 
 on:
   workflow_run:
-    workflows: ["Create Tag Workflow"]
+    workflows:
+      - Workflow in Repo1
     types:
       - completed
 
@@ -10,7 +11,8 @@ jobs:
   triggered-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: Run Task
-        run: echo "Triggered by workflow from another repository."
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Perform actions
+        run: echo "Triggered by Repo1's workflow"
