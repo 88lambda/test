@@ -14,3 +14,4 @@ jobs:
       - name: Perform actions
         run: |
           echo "Triggered by Repo1's workflow"
+          echo "Workflow triggered by Repo A on ref: ${{ github.event.client_payload.ref }}"
