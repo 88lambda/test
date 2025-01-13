@@ -2,10 +2,8 @@ name: Triggered by Repo1
 
 on:
   workflow_run:
-    workflows:
-      - Workflow in Repo1
-    types:
-      - completed
+    workflows: ["Workflow in Repo1"]
+    types: [completed]
 
 jobs:
   triggered-job:
